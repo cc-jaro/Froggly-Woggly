@@ -13,6 +13,7 @@
     <extension index="4">extensions\Game_Pause</extension>
   </NewExtensions>
   <sounds name="sound">
+    <sound>sound\clair_de_lune1</sound>
     <sound>sound\clair_de_lune</sound>
     <sound>sound\slap1</sound>
     <sound>sound\slap2</sound>
@@ -85,6 +86,9 @@
       <object>objects\but_config</object>
       <object>objects\but_music</object>
       <object>objects\but_scale</object>
+    </objects>
+    <objects name="tutorial objects">
+      <object>objects\tutorial1</object>
     </objects>
     <object>objects\ofrog</object>
     <object>objects\osolid</object>

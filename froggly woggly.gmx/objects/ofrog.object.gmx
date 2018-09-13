@@ -29,12 +29,16 @@
 //initialise gravity. DEFAULT = 0.75
 grav = 0.75;
 ctrls = 1
+hasjumped = 0;
 //init basic movement variables. hsp, vsp, jumpcharge and grounded
 hsp = 0;
 vsp = 0;
 jumpcharge = 0;
 grounded = 0;
 aiming = 0;
+timer = 0;
+milisecs = 0;
+secs = 0;
 
 //init basic aiming variables. ensure Charge is 0.75, and aimmod and chargemod is 1
 charge = 0.75;
@@ -61,6 +65,9 @@ ini_open("config.ini");
 maxheight = ini_read_real("scores", "maxheight", 0);
 victory = ini_read_real("scores", "victory", 0);
 ini_close(); 
+
+//things like attempts and so on
+global.attempts = 0;
 </string>
           </argument>
         </arguments>
@@ -194,6 +201,9 @@ if jumpcharge &gt; 0 &amp;&amp; key_jump = 0 &amp;&amp; ctrls != 1
     {
     hsp = (lengthdir_x(jpower,aimdir))
     vsp = lengthdir_y(jpower,aimdir)
+        
+        if hasjumped = 0
+        hasjumped = 1;
     
         if jumptimer &gt; 0 // makes star if the frog jumps nicely
         instance_create(x,y,ostar);
@@ -293,7 +303,8 @@ if place_meeting(x,y,oflag) &amp;&amp; victory = 0
     ini_write_real("scores", "victory", 1);
     ini_close();
     }
- //new control scheme  
+ //new control scheme 
+ //this is the click and drag section
 if ctrls = 1
     {
     if mleftp = 1 &amp;&amp; grounded = 1
@@ -304,7 +315,7 @@ if ctrls = 1
         }
     }
 
-    
+ //setting and controlling aiming with click and drag  
 if aiming = 1 
 {  
     if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270
@@ -320,33 +331,40 @@ if aiming = 1
         aimdir = point_direction(mouse_x,mouse_y,savex,savey)
     }
 }    
-
+//aiming with click and drag
 if aiming = 1
     {
     jumpcharge = point_distance(mouse_x,mouse_y,savex,savey)/5
     }
 
-
+//jumping code for click and drag
 if jumpcharge &gt; 0 &amp;&amp; mleft = 0
 {
     if grounded = 1 //ensures the frog is on the ground for jumping
     {
     hsp = round(lengthdir_x(jpower,aimdir))
     vsp = round(lengthdir_y(jpower,aimdir))
-    aiming = 0
-    jumpcharge = 0
+    if hasjumped = 0
+    hasjumped = 1;
+    aiming = 0;
+    jumpcharge = 0;
     }
 }
 
-
-
+//caps jumpcharge
 if jumpcharge &gt; 110
 jumpcharge = 110;
 
+//timing code
+if hasjumped = 1
+timer ++;
 
-    
-    
-    
+//milisecs = timer div 6;
+secs = timer div 60;
+
+
+
+
     
     
     
