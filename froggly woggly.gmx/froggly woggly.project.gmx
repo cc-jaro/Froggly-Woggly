@@ -30,6 +30,7 @@
     <sprite>sprites\sprite10</sprite>
     <sprite>sprites\sprite11</sprite>
     <sprite>sprites\sding</sprite>
+    <sprite>sprites\sspike</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -91,6 +92,7 @@
     <object>objects\oflag</object>
     <object>objects\osolidsmall</object>
     <object>objects\levelflag</object>
+    <object>objects\ospike</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
@@ -98,7 +100,7 @@
     <room>rooms\test_room</room>
     <room>rooms\room2</room>
     <rooms name="levels">
-      <room>rooms\level1_1</room>
+      <room>rooms\rlevel1</room>
     </rooms>
   </rooms>
   <help>
