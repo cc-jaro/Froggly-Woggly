@@ -362,7 +362,15 @@ timer ++;
 //milisecs = timer div 6;
 secs = timer div 60;
 
-
+//falling down a pit
+if y &gt; (room_height+100)
+    {
+    hsp = 0;
+    vsp = 0;
+    global.attempts ++;
+    x = control.frogspawnx;
+    y = control.frogspawny;
+    }
 
 
     

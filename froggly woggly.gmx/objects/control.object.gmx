@@ -128,8 +128,10 @@ totalfps = 0;
 avgfps = 0;
 alarm[11] = room_speed/2;
 
-
-
+//scoring memes
+global.attempts = 1;
+frogspawnx = ofrog.x;
+frogspawny = ofrog.y;
 
 </string>
           </argument>
@@ -355,6 +357,7 @@ if global.leveltype = 2
 {
 draw_set_halign(fa_left)
 draw_text(global.screenw-230,20,"time:"+string(ofrog.secs))
+draw_text(global.screenw-230,50,"tries:"+string(global.attempts))
 }
 //Debug text Left of Screen
 draw_set_font(fpsfont);
@@ -405,6 +408,30 @@ draw_set_alpha(0.8);
 
 
 draw_set_alpha(1)
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ofrog.x = frogspawnx;
+ofrog.y = frogspawny;
 </string>
           </argument>
         </arguments>
