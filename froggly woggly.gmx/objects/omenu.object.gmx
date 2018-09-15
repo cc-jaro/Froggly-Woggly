@@ -42,6 +42,7 @@ instance_create(x,y,but_play)
 instance_create(x,y,but_music)
 instance_create(x,y,but_config)
 instance_create(x,y,but_scale)
+instance_create(x,y,but_screen)
 
 //opens the ini to read some memes.
 ini_open("config.ini");
