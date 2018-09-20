@@ -90,11 +90,11 @@ x += hsp;
 y += vsp;
 
 //dive check code
-if (ofrog.x-48) &lt; x and x &lt; (ofrog.x+48) &amp;&amp; abs(hsp) &gt; 0 &amp;&amp; candive = 1
+if (ofrog.x-36) &lt; x and x &lt; (ofrog.x+36) &amp;&amp; abs(hsp) &gt; 0 &amp;&amp; candive = 1
 {
 dive = 1;
 candive = 0;
-alarm[0] = 60;
+alarm[0] = 240;
 }
 
 //actual diving
