@@ -33,6 +33,8 @@
     <sprite>sprites\sding</sprite>
     <sprite>sprites\sspike</sprite>
     <sprite>sprites\sprite13</sprite>
+    <sprite>sprites\sprite14</sprite>
+    <sprite>sprites\sprite15</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -99,6 +101,9 @@
     <object>objects\osolidsmall</object>
     <object>objects\levelflag</object>
     <object>objects\ospike</object>
+    <object>objects\ocheckpoint</object>
+    <object>objects\obat</object>
+    <object>objects\owalker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>

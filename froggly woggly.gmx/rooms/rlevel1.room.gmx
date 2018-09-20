@@ -187,7 +187,6 @@
     <instance objName="osolid" x="2280" y="1944" name="inst_38722E43" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="2328" y="1944" name="inst_6865C1DE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="2376" y="1944" name="inst_8D5793D9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="2424" y="1944" name="inst_6D12B42D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="2472" y="1944" name="inst_F71483BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="2520" y="1944" name="inst_F3C904C6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="2568" y="2328" name="inst_CAD27F2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -390,6 +389,10 @@
     <instance objName="osolid" x="5016" y="1608" name="inst_0DDE6FEE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="4968" y="1608" name="inst_C1C27A28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="levelflag" x="5208" y="1560" name="inst_4FA13295" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ocheckpoint" x="2376" y="1896" name="inst_49BA4170" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="2424" y="1944" name="inst_AF043059" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obat" x="1344" y="1656" name="inst_B099081C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="owalker" x="1080" y="2280" name="inst_6577E8D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
