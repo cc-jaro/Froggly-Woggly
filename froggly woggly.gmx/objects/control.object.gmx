@@ -455,9 +455,9 @@ ofrog.y = frogspawny;
           <argument>
             <kind>1</kind>
             <string>if room = room1
-room_goto(level1_1);
+room_goto(rlevel1);
 
-if room = level1_1
+if room = rlevel1
 room_goto(room1);
 </string>
           </argument>
@@ -491,7 +491,7 @@ ini_write_real("configs", "music", 1); //Writes preference to ini for next time
 ini_close(); 
     if !audio_is_playing(clair_de_lune) //Make sure audio is not playing, Just in case
     {
-        audio_play_sound(clairdelune_2,0,1);
+        audio_play_sound(clair_de_lune,0,1);
     }
 exit //closes event before it sees that now music is on, it must turn off
 }
