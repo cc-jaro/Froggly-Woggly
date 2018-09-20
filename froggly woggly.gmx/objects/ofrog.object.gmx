@@ -30,6 +30,8 @@
 grav = 0.75;
 ctrls = 1
 hasjumped = 0;
+dead = 0;
+
 //init basic movement variables. hsp, vsp, jumpcharge and grounded
 hsp = 0;
 vsp = 0;
@@ -384,10 +386,19 @@ if place_meeting(x,y,ospike)
     hsp = 0;
     vsp = 0;
     global.attempts ++;
-    x = control.frogspawnx;
-    y = control.frogspawny;
+   x = control.frogspawnx;
+  y = control.frogspawny;
     }
     
+//enemy death
+if place_meeting(x,y,oenemy)
+    {//reset code. This should work for any deaths
+    hsp = 0;
+    vsp = 0;
+    global.attempts ++;
+   x = control.frogspawnx;
+  y = control.frogspawny;
+    }
     
     
 

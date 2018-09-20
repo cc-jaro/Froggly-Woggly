@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>oenemy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,9 +25,36 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hsp = -4;
+            <string>hsp = -6;
 vsp = 0;
 image_speed = 0.25;
+height = y;
+dive = 0;
+candive = 1;
+dir = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>candive = 1;
 </string>
           </argument>
         </arguments>
@@ -50,21 +77,88 @@ image_speed = 0.25;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if x &gt; room_width or x &lt; 0
-    {
-    hsp *= -1;
-    image_xscale *= -1;
-    }
-    
+            <string>//room bounding to right
+if x &gt; room_width
+dir = -1;
+
+//room bounding to left
+if x &lt; 0
+dir = 1;
+
+//setting x and y to hsp and vsp    
 x += hsp;
 y += vsp;
 
-//collision_line(x,y,ofrog.x,ofrog.y,osolid,1,1)
-if (point_distance(x,y,ofrog.x,ofrog.y) &lt; 1000)
+//dive check code
+if (ofrog.x-48) &lt; x and x &lt; (ofrog.x+48) &amp;&amp; abs(hsp) &gt; 0 &amp;&amp; candive = 1
+{
+dive = 1;
+candive = 0;
+alarm[0] = 60;
+}
+
+//actual diving
+if dive = 1
+{
+hsp = 0
+vsp = 16
+}
+
+//recovering from dive
+if dive = 0 &amp;&amp; y &lt;= height
+hsp = 6 * dir;
+
+//Vertical Collision
+if (place_meeting(x,y+vsp,osolid))
+{
+    while (!place_meeting(x,y+sign(vsp),osolid))
     {
-    hsp += lengthdir_x(point_distance(x,y,ofrog.x,ofrog.y),point_direction(x,y,ofrog.x,ofrog.y))
-    vsp += lengthdir_y(point_distance(x,y,ofrog.x,ofrog.y),point_direction(x,y,ofrog.x,ofrog.y))
+    y += sign(vsp);
     }
+dive = 0;
+}
+
+//resetting to height
+if dive = 0 &amp;&amp; y != height
+vsp =  -8;
+
+if y &lt;= height &amp;&amp; dive = 0
+{
+vsp = 0;
+}
+
+//making sure sprite faces the correct way
+image_xscale = -dir;
+
+//horizontal collision
+if (place_meeting(x+hsp,y,osolid))
+{
+dir *= -1;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_self();
+draw_text(x,y+24,dir)
 </string>
           </argument>
         </arguments>

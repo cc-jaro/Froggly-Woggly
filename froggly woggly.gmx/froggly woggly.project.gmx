@@ -35,6 +35,7 @@
     <sprite>sprites\sprite13</sprite>
     <sprite>sprites\sprite14</sprite>
     <sprite>sprites\sprite15</sprite>
+    <sprite>sprites\sprite16</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -94,6 +95,11 @@
     <objects name="tutorial objects">
       <object>objects\tutorial</object>
     </objects>
+    <objects name="enemie">
+      <object>objects\oenemy</object>
+      <object>objects\owalker</object>
+      <object>objects\obat</object>
+    </objects>
     <object>objects\ofrog</object>
     <object>objects\osolid</object>
     <object>objects\ostar</object>
@@ -102,8 +108,6 @@
     <object>objects\levelflag</object>
     <object>objects\ospike</object>
     <object>objects\ocheckpoint</object>
-    <object>objects\obat</object>
-    <object>objects\owalker</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
