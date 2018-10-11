@@ -27,11 +27,14 @@
             <kind>1</kind>
             <string>///Init display and buttons
 //room size init, its a failsafe
-if room_width &lt; 1920
-room_width = 1920;
 
-if room_height &lt; 1080
-room_height = 1080;
+room_width = display_get_width();
+view_wport[0] = display_get_width();
+
+
+room_height = display_get_height();
+view_hport[0] = display_get_height();
+
 
 //sets variables for display height and width, to read from for setting up other variables
 global.screenh = display_get_height();
