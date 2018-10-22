@@ -17,7 +17,7 @@
     <option_android_arch_mipsr2sf>false</option_android_arch_mipsr2sf>
     <option_android_arch_x86>True</option_android_arch_x86>
     <option_android_build_tools_version>23.0.1</option_android_build_tools_version>
-    <option_android_build_version>28</option_android_build_version>
+    <option_android_build_version>46</option_android_build_version>
     <option_android_color_depth>0</option_android_color_depth>
     <option_android_compile_sdk_version>23</option_android_compile_sdk_version>
     <option_android_display_name>Froggly Woggly</option_android_display_name>
@@ -569,7 +569,7 @@
     <option_winUAP_wide_logo>Configs\Default\WindowsUAP\logos\WideLogo.scale-100.png</option_winUAP_wide_logo>
     <option_windowcolor>clBlack</option_windowcolor>
     <option_windows_alternate_sync_method>False</option_windows_alternate_sync_method>
-    <option_windows_build_version>7</option_windows_build_version>
+    <option_windows_build_version>8</option_windows_build_version>
     <option_windows_company_info></option_windows_company_info>
     <option_windows_copyright_info></option_windows_copyright_info>
     <option_windows_create_textures_on_demand>False</option_windows_create_textures_on_demand>

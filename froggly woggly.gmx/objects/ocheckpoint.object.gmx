@@ -27,9 +27,11 @@
             <kind>1</kind>
             <string>if place_meeting(x,y,ofrog)
     {
+    
     if control.frogspawnx != x
         {
         control.frogspawnx = x
+        global.levelscore += 500
         }
     if control.frogspawny != y-18
         {

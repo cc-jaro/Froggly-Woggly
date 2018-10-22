@@ -128,10 +128,40 @@ totalfps = 0;
 avgfps = 0;
 alarm[11] = room_speed/2;
 
-//scoring memes
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scoring memes
 global.attempts = 1;
 frogspawnx = ofrog.x;
 frogspawny = ofrog.y;
+
+global.totalscore = 0;
+
+global.levelscore = 0;
+basescore = 0;
+time = 0;
+
+countingscore = basescore;
 
 </string>
           </argument>
@@ -165,6 +195,29 @@ avgfps = totalfps / steps;
 
 
 alarm[11] = (room_speed/2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(rmenu);
 </string>
           </argument>
         </arguments>
@@ -255,6 +308,73 @@ ofrog.aimdir = aimdir;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///score table at end of level
+time = round((ofrog.timer/60));
+attempts = global.attempts
+
+if ofrog.active = 1
+{
+time2 = time*10;
+attempts2 = ((attempts -1)*100)
+levelscore2 = global.levelscore;
+countingscore = basescore;
+}
+
+//score ratio
+if ofrog.hasjumped = 1 &amp;&amp; ofrog.active = 0
+{
+global.totalscore = (basescore - (time*10) - (attempts-1)*100 + (global.levelscore))
+}
+
+if global.totalscore = countingscore
+{
+room_goto(rmenu)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.levelscore ++;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
@@ -339,7 +459,8 @@ vks = virtual_key_add(view_wview-(view_wview-10), view_hview-210, 175, 200, vk_s
             <string>//Initialises Draw Settings for this step
 draw_set_alpha(1);
 draw_set_colour(c_black);
-
+if ofrog.active = 1
+{
 //charge bar top middle
 if global.chargebar = 0 or global.chargebar = 2
 {
@@ -357,6 +478,7 @@ if global.leveltype = 2
 {
 draw_set_halign(fa_left)
 draw_text(global.screenw-230,20,"time:"+string(ofrog.secs))
+draw_text(global.screenw-430,20,"points"+string(global.levelscore))
 draw_text(global.screenw-230,50,"tries:"+string(global.attempts))
 }
 //Debug text Left of Screen
@@ -408,6 +530,76 @@ draw_set_alpha(0.8);
 
 
 draw_set_alpha(1)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///score drawing
+draw_set_alpha(1);
+draw_set_colour(c_black);
+
+if ofrog.active = 0
+{
+if global.scoretick = 0
+    {
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(basescore))
+    }
+    
+if global.scoretick = 1 &amp;&amp; time2 &gt; 0
+    {
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    time2 --;
+    countingscore --;
+    }
+    
+if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &gt; 0
+    {
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    attempts2 --;
+    countingscore --;
+    }
+    
+if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &gt; 0
+    {
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
+    levelscore2 -= 5;
+    countingscore += 5;
+    }
+    
+if time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &lt;= 0 &amp;&amp; global.scoretick = 1
+    {
+    global.scoretick = 0
+    alarm[0] = 120
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
+    }
+
+}
 </string>
           </argument>
         </arguments>
@@ -511,6 +703,28 @@ exit
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
