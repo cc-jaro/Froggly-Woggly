@@ -25,26 +25,14 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Init display and buttons
-//room size init, its a failsafe
-
-room_width = display_get_width();
-view_wport[0] = display_get_width();
-
-
-room_height = display_get_height();
-view_hport[0] = display_get_height();
-
-
-//sets variables for display height and width, to read from for setting up other variables
-global.screenh = display_get_height();
-global.screenw = display_get_width();
+            <string>//runs the display init
+script_execute(display_init)
 
 //creates the buttons that are in the game just now. Doesnt care about where they are just creates them. They sort themselves out
 instance_create(x,y,but_play)
 instance_create(x,y,but_music)
 instance_create(x,y,but_config)
-instance_create(x,y,but_scale)
+//instance_create(x,y,but_scale)
 instance_create(x,y,but_screen)
 
 //opens the ini to read some memes.

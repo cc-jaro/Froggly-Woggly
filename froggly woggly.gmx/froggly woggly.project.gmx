@@ -54,30 +54,7 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <scripts name="Virtual Joystick">
-      <script>scripts\vstick_set_frontsprite.gml</script>
-      <script>scripts\vstick_get_frontsprite.gml</script>
-      <script>scripts\vstick_set_backsprite.gml</script>
-      <script>scripts\vstick_get_backsprite.gml</script>
-      <script>scripts\vstick_get_active.gml</script>
-      <script>scripts\vstick_set_active.gml</script>
-      <script>scripts\vstick_set_radius.gml</script>
-      <script>scripts\vstick_get_radius.gml</script>
-      <script>scripts\vstick_set_y.gml</script>
-      <script>scripts\vstick_get_y.gml</script>
-      <script>scripts\vstick_set_x.gml</script>
-      <script>scripts\vstick_get_x.gml</script>
-      <script>scripts\vstick_get_yaxis.gml</script>
-      <script>scripts\vstick_get_xaxis.gml</script>
-      <script>scripts\vstick_get_direction.gml</script>
-      <script>scripts\vstick_get_deviation.gml</script>
-      <script>scripts\vstick_check.gml</script>
-      <script>scripts\vstick_check_pressed.gml</script>
-      <script>scripts\vstick_check_released.gml</script>
-      <script>scripts\vstick_draw.gml</script>
-      <script>scripts\vstick_step.gml</script>
-      <script>scripts\vstick_init.gml</script>
-    </scripts>
+    <script>scripts\display_init.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>

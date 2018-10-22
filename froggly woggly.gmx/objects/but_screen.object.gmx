@@ -119,7 +119,7 @@ if global.fullscreen = 0
             <kind>1</kind>
             <string>draw_self();
 draw_set_halign(fa_center);
-draw_text(x,y,"fullscreen toggle "+string(global.scaling));
+draw_text(x,y,"fullscreen toggle "+string(1));
 </string>
           </argument>
         </arguments>
