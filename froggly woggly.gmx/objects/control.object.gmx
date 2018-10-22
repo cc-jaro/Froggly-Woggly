@@ -130,10 +130,43 @@ totalfps = 0;
 avgfps = 0;
 alarm[11] = room_speed/2;
 
-//scoring memes
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///scoring memes
 global.attempts = 1;
 frogspawnx = ofrog.x;
 frogspawny = ofrog.y;
+
+global.totalscore = 0;
+
+global.levelscore = 0;
+basescore = 0;
+time = 0;
+counting = 0;
+scorephase = 0;
+
+
+countingscore = basescore;
 
 </string>
           </argument>
@@ -167,6 +200,52 @@ avgfps = totalfps / steps;
 
 
 alarm[11] = (room_speed/2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scorephase ++
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>room_goto(rmenu);
 </string>
           </argument>
         </arguments>
@@ -257,6 +336,70 @@ ofrog.aimdir = aimdir;
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///score table at end of level
+time = round((ofrog.timer/60));
+attempts = global.attempts
+
+if ofrog.active = 1
+{
+time2 = time*10;
+attempts2 = ((attempts -1)*100)
+levelscore2 = global.levelscore;
+countingscore = basescore;
+}
+
+//score ratio
+if ofrog.hasjumped = 1 &amp;&amp; ofrog.active = 0
+{
+global.totalscore = (basescore - (time*10) - (attempts-1)*100 + (global.levelscore))
+}
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="5" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>global.levelscore += 20;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
@@ -341,7 +484,8 @@ vks = virtual_key_add(view_wview-(view_wview-10), view_hview-210, 175, 200, vk_s
             <string>//Initialises Draw Settings for this step
 draw_set_alpha(1);
 draw_set_colour(c_black);
-
+if ofrog.active = 1
+{
 //charge bar top middle
 if global.chargebar = 0 or global.chargebar = 2
 {
@@ -359,6 +503,7 @@ if global.leveltype = 2
 {
 draw_set_halign(fa_left)
 draw_text(global.screenw-230,20,"time:"+string(ofrog.secs))
+draw_text(global.screenw-430,20,"points"+string(global.levelscore))
 draw_text(global.screenw-230,50,"tries:"+string(global.attempts))
 }
 //Debug text Left of Screen
@@ -410,6 +555,129 @@ draw_set_alpha(0.8);
 
 
 draw_set_alpha(1)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///score drawing
+draw_set_alpha(1);
+draw_set_colour(c_black);
+
+if ofrog.active = 0
+{
+if global.scoretick = 0 &amp;&amp; counting = 1
+    {
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(basescore))
+    }
+    
+if global.scoretick = 1 &amp;&amp; time2 &gt; 0
+    {
+    draw_set_colour(c_black)
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    time2 -=2;
+    countingscore -=2;
+    }
+   
+if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &gt; 0
+    {
+    draw_set_colour(c_black)
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    attempts2 -=2;
+    countingscore -=2;
+    }
+     
+if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &gt; 0
+    {
+    draw_set_colour(c_black)
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_set_colour(c_green)
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
+        
+        if levelscore2 &gt; 10000
+            {
+            levelscore2 -= 50;
+            countingscore += 50;
+            }
+        if levelscore2 &lt; 10000 &amp;&amp; levelscore2 &gt;= 1000
+            {
+            levelscore2 -= 25;
+            countingscore += 25;
+            }
+        if levelscore2 &lt; 1000 &amp;&amp; levelscore2 &gt;= 500
+            {
+            levelscore2 -= 10;
+            countingscore += 10;
+            }
+        if levelscore2 &lt; 500 &amp;&amp; levelscore2 &gt;= 180
+            {
+            levelscore2 -= 5;
+            countingscore += 5;
+            }
+        if levelscore2 &lt; 180 &amp;&amp; levelscore2 &gt;= 0
+            {
+            levelscore2 --;
+            countingscore ++;
+            }
+        }
+}
+if time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &lt;= 0 &amp;&amp; counting = 1
+    {
+    global.scoretick = 0
+    counting = 2
+    alarm[0] = 120
+    }
+
+if counting = 2
+{
+    draw_set_colour(c_black)
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_set_colour(c_green)
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </string>
           </argument>
         </arguments>
@@ -457,9 +725,9 @@ ofrog.y = frogspawny;
           <argument>
             <kind>1</kind>
             <string>if room = room1
-room_goto(level1_1);
+room_goto(rlevel1);
 
-if room = level1_1
+if room = rlevel1
 room_goto(room1);
 </string>
           </argument>
@@ -493,7 +761,7 @@ ini_write_real("configs", "music", 1); //Writes preference to ini for next time
 ini_close(); 
     if !audio_is_playing(clair_de_lune) //Make sure audio is not playing, Just in case
     {
-        audio_play_sound(clairdelune_2,0,1);
+        audio_play_sound(clair_de_lune,0,1);
     }
 exit //closes event before it sees that now music is on, it must turn off
 }
@@ -513,6 +781,28 @@ exit
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>

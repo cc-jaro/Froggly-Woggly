@@ -33,6 +33,13 @@
     <sprite>sprites\sding</sprite>
     <sprite>sprites\sspike</sprite>
     <sprite>sprites\sprite13</sprite>
+    <sprite>sprites\sprite14</sprite>
+    <sprite>sprites\sprite15</sprite>
+    <sprite>sprites\sprite16</sprite>
+    <sprite>sprites\sprite17</sprite>
+    <sprite>sprites\sprite18</sprite>
+    <sprite>sprites\sfrog2</sprite>
+    <sprite>sprites\sprite19</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -43,6 +50,7 @@
     <background>background\bg_hills</background>
     <background>background\bg_clouds1</background>
     <background>background\bg_clouds2</background>
+    <background>background\background8</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -77,7 +85,6 @@
   </fonts>
   <objects name="objects">
     <objects name="controllers">
-      <object>objects\control</object>
       <object>objects\olevelcontrol</object>
       <object>objects\ostick</object>
     </objects>
@@ -92,13 +99,26 @@
     <objects name="tutorial objects">
       <object>objects\tutorial</object>
     </objects>
+    <objects name="enemie">
+      <object>objects\oenemy</object>
+      <object>objects\owalker</object>
+      <object>objects\obat</object>
+      <object>objects\ojumper</object>
+    </objects>
+    <objects name="bonuses">
+      <object>objects\oding</object>
+      <object>objects\ostar</object>
+    </objects>
+    <objects name=" Level Objects">
+      <object>objects\osolidsmall</object>
+      <object>objects\ospike</object>
+      <object>objects\osolid</object>
+      <object>objects\ocheckpoint</object>
+      <object>objects\levelflag</object>
+      <object>objects\oflag</object>
+    </objects>
     <object>objects\ofrog</object>
-    <object>objects\osolid</object>
-    <object>objects\ostar</object>
-    <object>objects\oflag</object>
-    <object>objects\osolidsmall</object>
-    <object>objects\levelflag</object>
-    <object>objects\ospike</object>
+    <object>objects\control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
@@ -108,6 +128,7 @@
     <rooms name="levels">
       <room>rooms\rlevel1</room>
     </rooms>
+    <room>rooms\roverworld</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
