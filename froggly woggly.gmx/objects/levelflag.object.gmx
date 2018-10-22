@@ -74,6 +74,8 @@
             <string>if place_meeting(x,y,ofrog) &amp;&amp; ofrog.active = 1
 {
 ofrog.active = 0;
+control.counting = 1;
+control.scorephase = 1;
 alarm[0] = 90;
 }
 

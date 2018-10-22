@@ -160,6 +160,9 @@ global.totalscore = 0;
 global.levelscore = 0;
 basescore = 0;
 time = 0;
+counting = 0;
+scorephase = 0;
+
 
 countingscore = basescore;
 
@@ -195,6 +198,29 @@ avgfps = totalfps / steps;
 
 
 alarm[11] = (room_speed/2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scorephase ++
 </string>
           </argument>
         </arguments>
@@ -343,10 +369,7 @@ if ofrog.hasjumped = 1 &amp;&amp; ofrog.active = 0
 global.totalscore = (basescore - (time*10) - (attempts-1)*100 + (global.levelscore))
 }
 
-if global.totalscore = countingscore
-{
-room_goto(rmenu)
-}
+
 </string>
           </argument>
         </arguments>
@@ -369,7 +392,7 @@ room_goto(rmenu)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>global.levelscore ++;
+            <string>global.levelscore += 20;
 </string>
           </argument>
         </arguments>
@@ -557,49 +580,102 @@ draw_set_colour(c_black);
 
 if ofrog.active = 0
 {
-if global.scoretick = 0
+if global.scoretick = 0 &amp;&amp; counting = 1
     {
     draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(basescore))
     }
     
 if global.scoretick = 1 &amp;&amp; time2 &gt; 0
     {
+    draw_set_colour(c_black)
     draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
     draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    time2 --;
-    countingscore --;
+    time2 -=2;
+    countingscore -=2;
     }
-    
+   
 if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &gt; 0
     {
+    draw_set_colour(c_black)
     draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
     draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
     draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    attempts2 --;
-    countingscore --;
+    attempts2 -=2;
+    countingscore -=2;
     }
-    
+     
 if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &gt; 0
     {
+    draw_set_colour(c_black)
     draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
     draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
     draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_set_colour(c_green)
     draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
-    levelscore2 -= 5;
-    countingscore += 5;
-    }
-    
-if time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &lt;= 0 &amp;&amp; global.scoretick = 1
+        
+        if levelscore2 &gt; 10000
+            {
+            levelscore2 -= 50;
+            countingscore += 50;
+            }
+        if levelscore2 &lt; 10000 &amp;&amp; levelscore2 &gt;= 1000
+            {
+            levelscore2 -= 25;
+            countingscore += 25;
+            }
+        if levelscore2 &lt; 1000 &amp;&amp; levelscore2 &gt;= 500
+            {
+            levelscore2 -= 10;
+            countingscore += 10;
+            }
+        if levelscore2 &lt; 500 &amp;&amp; levelscore2 &gt;= 180
+            {
+            levelscore2 -= 5;
+            countingscore += 5;
+            }
+        if levelscore2 &lt; 180 &amp;&amp; levelscore2 &gt;= 0
+            {
+            levelscore2 --;
+            countingscore ++;
+            }
+        }
+}
+if time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &lt;= 0 &amp;&amp; counting = 1
     {
     global.scoretick = 0
+    counting = 2
     alarm[0] = 120
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
-    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
     }
 
+if counting = 2
+{
+    draw_set_colour(c_black)
+    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
+    draw_set_colour(c_red)
+    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_set_colour(c_green)
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </string>
           </argument>
         </arguments>

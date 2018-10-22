@@ -380,6 +380,13 @@ if x &gt; room_width or x &lt; 0
     {
     hsp *= -1
     }
+   
+//stops frog from moveing on collision with flag   
+if active = 0
+    {
+    hsp = 0
+    }
+    
     
 //spike death
 if place_meeting(x,y,ospike)
