@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///display init
+instance_activate_object(self);
 script_execute(display_init);
 </string>
           </argument>
@@ -87,6 +88,10 @@ avgfps = 0;
 alarm[11] = room_speed/2;
 
 
+global.scale = 1;
+scale = 1;
+
+
 
 </string>
           </argument>
@@ -119,8 +124,9 @@ global.levelscore = 0;
 basescore = 0;
 time = 0;
 counting = 0;
-scorephase = 0;
 
+valarm = 0;
+cphase = 0;
 
 countingscore = basescore;
 
@@ -178,8 +184,7 @@ alarm[11] = (room_speed/2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scorephase ++
-</string>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -224,14 +229,14 @@ alarm[11] = (room_speed/2);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>scale = global.scale
+            <string>//scale = global.scale
 
 //joystick stuff
 
 //sets the "real" sizes to correspond with the GUI layer
-realwidth = view_xview[0] + global.screenw;
-realheight = view_yview[0] + global.screenh;
-
+//realwidth = view_xview[0] + global.screenw;
+//realheight = view_yview[0] + global.screenh;
+/*
 //since all following is android only...
 if debug = 1
 
@@ -283,7 +288,7 @@ ofrog.aimdir = aimdir;
 }
 }//END OF ANDROID ONLY SECTION
 
-
+*/
 
 
 
@@ -315,8 +320,8 @@ attempts = global.attempts
 
 if ofrog.active = 1
 {
-time2 = time*10;
-attempts2 = ((attempts -1)*100)
+time2 = (time*10)*-1;
+attempts2 = ((attempts -1)*100)*-1;
 levelscore2 = global.levelscore;
 countingscore = basescore;
 }
@@ -533,26 +538,73 @@ draw_set_alpha(1)
           <argument>
             <kind>1</kind>
             <string>///score drawing
+
+script_execute(scr_score)
+
+
+/*
 draw_set_alpha(1);
 draw_set_colour(c_black);
 
 if ofrog.active = 0
 {
-if global.scoretick = 0 &amp;&amp; counting = 1
-    {
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(basescore))
-    }
-    
-if global.scoretick = 1 &amp;&amp; time2 &gt; 0
+if  counting = 1 //&amp;&amp; global.scoretick = 0 
     {
     draw_set_colour(c_black)
     draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
     draw_set_colour(c_red)
     draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    time2 -=2;
-    countingscore -=2;
+    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
+    draw_set_colour(c_green)
+    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2)) 
     }
-   
+}    
+
+
+if global.scoretick = 1
+    {
+    {
+    if time2 &gt; 0
+        {
+        time2 -=2;
+        countingscore -=2;
+        alarm[1] = 60;
+        }
+    if time2 &lt;= 0 &amp;&amp; alarm[1] &gt; 0 &amp;&amp; phase = 0
+        {
+        phase = 1;
+        }
+    }
+    
+    if time2 = 0
+        {
+        if attempts2 &gt; 0
+            {
+            attempts2 -=2;
+            countingscore -=2;
+            alarm[1] = 60;
+            }
+        if attempts2 &lt;= 0 &amp;&amp; alarm[1] &gt; 0 &amp;&amp; phase = 1
+            {
+            phase = 2;
+            }
+        }
+    }
+    
+    
+    
+    
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+/*   
 if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &gt; 0
     {
     draw_set_colour(c_black)
