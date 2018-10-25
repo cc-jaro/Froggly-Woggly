@@ -59,7 +59,7 @@ if cphase = 2
             countingscore += 50;
             valarm = 60;
             }
-        if levelscore2 < 10000 && levelscore2 >= 1000
+        if levelscore2 <= 10000 && levelscore2 >= 1000
             {
             levelscore2 -= 30;
             countingscore += 30;
@@ -71,13 +71,13 @@ if cphase = 2
             countingscore += 10;
             valarm = 60;
             }
-        if levelscore2 < 500 && levelscore2 >= 180
+        if levelscore2 <= 500 && levelscore2 >= 180
             {
             levelscore2 -= 2;
             countingscore += 2;
             valarm = 60;
             }
-        if levelscore2 < 180 && levelscore2 > 0
+        if levelscore2 <= 180 && levelscore2 > 0
             {
             levelscore2 --;
             countingscore ++;
@@ -94,18 +94,6 @@ if cphase = 3
     room_goto(rmenu)
     }
 }     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-        
 
 if valarm > 0
-valarm --;
-     
+valarm --;  

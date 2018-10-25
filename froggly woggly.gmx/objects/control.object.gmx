@@ -395,27 +395,6 @@ draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
 }
 
 
-//set color and alpha for next step
-draw_set_colour(c_dkgray);
-draw_set_alpha(1);
-depth = -1000;
-
-//checks to see if it's android
-if debug = 1 &amp;&amp; ctrls = 0
-    {
-//draws middle joystick part
-    if joystick = 1
-        { 
-        draw_circle(jsx,jsy,50*scale,0);
-        draw_line_width(jsx,jsy,realwidth-(250*scale),realheight-(160*scale),8*scale);
-        }
-
-//resets middle joystick position
-    if joystick = 0
-        {
-        draw_circle(realwidth-(250*scale),realheight-(160*scale),50*scale,0);
-        }
-    }
 /*
 vku = virtual_key_add(view_wview-180, view_hview-210, 175, 100, vk_up); 
 vkd = virtual_key_add(view_wview-180, view_hview-105, 175, 100, vk_down); 
@@ -450,8 +429,8 @@ if ofrog.active = 1
 //charge bar top middle
 if global.chargebar = 0 or global.chargebar = 2
 {
-draw_rectangle((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(60*scale),1)
-draw_healthbar((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(60*scale),(100/110)*ofrog.jumpcharge,0,c_red,c_yellow,0,0,1)
+draw_rectangle((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(30*scale),1)
+draw_healthbar((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(30*scale),(100/110)*ofrog.jumpcharge,0,c_red,c_yellow,0,0,1)
 }
 
 //text top right
@@ -472,10 +451,10 @@ draw_set_font(fpsfont);
 draw_set_halign(fa_left);
 draw_text(30,120,"Fps:"+string(fps))
 draw_text(30,140,"Steps:"+string(avgfps))
-draw_text(30,160,ofrog.aiming)
-draw_text(30,180,ofrog.savex)
-draw_text(30,200,ofrog.savey)
-draw_text(30,220,ofrog.aimdir)
+//draw_text(30,160,ofrog.aiming)
+//draw_text(30,180,ofrog.savex)
+draw_text(30,200,ofrog.hsp)
+draw_text(30,220,ofrog.vsp)
 
 //Sets Alpha and Draws Joystick Circle
 draw_set_alpha(0.5);

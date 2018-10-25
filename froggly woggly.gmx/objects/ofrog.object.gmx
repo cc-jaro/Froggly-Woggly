@@ -95,6 +95,10 @@ ini_close();
 //things like attempts and so on
 global.attempts = 0;
 active = 1;
+
+drawcirc = 0;
+circalpha = 0;
+
 </string>
           </argument>
         </arguments>
@@ -209,7 +213,7 @@ if (place_meeting(x+hsp,y,osolid))
     {
     x += sign(hsp);
     }
-hsp *= ((0.6666)*-1);
+hsp *= ((0.5)*-1);
 }
 
 // calculation for hsp and vsp. Nice meme
@@ -269,13 +273,6 @@ jumptimer = 0;
 //Jpower calculation
 jpower = (jumpcharge/5.5) + (jumpcharge*0.075)
 
-//gives the frog a boost when jumping with full charge. May remove for consistency
-//if key_jump = 0 &amp;&amp; grounded = 1 &amp;&amp; jumpcharge &gt; 50
-//jbonus = jpower/10;
-
-//calculates the jump power accurately
-//jpower = (jumpcharge/4)+  jbonus;
-
 //charge stuff. these 2 lines allow the charge to reverse itself at full or empty.
 if jumpcharge &gt; 110
 chargemod = -1;
@@ -300,9 +297,11 @@ aimdir = 165;
 //aiming for non android versions of the game. 
 if (mleft = 1 ) &amp;&amp; control.debug = 0 &amp;&amp; ctrls != 1
 {
+        script_execute(script2)
         aimmod = sign(mouse_x-x);
         if (point_direction(x,y,mouse_x,mouse_y) &gt;= min(15,165) &amp;&amp; point_direction(x,y,mouse_x,mouse_y) &lt;= max(15,165))
         aimdir = point_direction(x,y,mouse_x,mouse_y);
+        
 }
 
 
@@ -475,8 +474,10 @@ image_index = grounded
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>///secondary memes
 instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
+
+
 </string>
           </argument>
         </arguments>
@@ -540,43 +541,23 @@ draw_set_colour(c_yellow);
 //Draws the aiming line
 if control.ctrls !=1
 {
-draw_line_width(self.x,self.y,x+(lengthdir_x(300,aimdir)),y+(lengthdir_y(300,aimdir)),4);
+//draw_line_width(self.x,self.y,x+(lengthdir_x(300,aimdir)),y+(lengthdir_y(300,aimdir)),4);
 }
 
 //checks to see if it should draw the old style charge bar and if it should, it will.
 if global.chargebar &gt;= 1 &amp;&amp; ctrls != 1
 {
 draw_set_colour(c_red);
-draw_line_width(self.x,self.y,x+(lengthdir_x(jumpcharge,aimdir)),y+lengthdir_y(jumpcharge,aimdir),8)
+//draw_line_width(self.x,self.y,x+(lengthdir_x(jumpcharge,aimdir)),y+lengthdir_y(jumpcharge,aimdir),8)
 }
 
 if aiming = 1 &amp;&amp; ctrls = 1
 {
 draw_set_colour(c_black);
-draw_line_width(savex,savey,mouse_x,mouse_y,(jumpcharge/10));
+//draw_line_width(savex,savey,mouse_x,mouse_y,(jumpcharge/10));
 
 }
 </string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>
@@ -599,6 +580,45 @@ draw_line_width(savex,savey,mouse_x,mouse_y,(jumpcharge/10));
           <argument>
             <kind>1</kind>
             <string>draw_self();
+
+if aiming = 1
+    {
+    window_set_cursor(cr_cross);
+    draw_sprite_ext(sprite20,0,savex,savey,1,1,0,c_ltgray,0.8);
+    
+    draw_throw_arc_width2(x,y,(lengthdir_x(jpower,aimdir)),(lengthdir_y(jpower,aimdir)),0.75,0.5,osolid,3);
+    }   
+
+
+
+if aiming = 0
+{
+drawcirc = 0;
+window_set_cursor(cr_default);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///set alpha and colour to default
+//draw_set_colour(c_black);
+//draw_set_alpha(1);
 </string>
           </argument>
         </arguments>
