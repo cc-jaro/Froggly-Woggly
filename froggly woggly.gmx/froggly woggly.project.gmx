@@ -19,6 +19,7 @@
     <sound>sound\slap1</sound>
     <sound>sound\slap2</sound>
     <sound>sound\slap3</sound>
+    <sound>sound\sndping</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\sprite0</sprite>
@@ -42,6 +43,8 @@
     <sprite>sprites\sfrog2</sprite>
     <sprite>sprites\sprite19</sprite>
     <sprite>sprites\sprite20</sprite>
+    <sprite>sprites\sprite21</sprite>
+    <sprite>sprites\sprite22</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -63,24 +66,15 @@
     <script>scripts\script2.gml</script>
     <script>scripts\draw_throw_arc_width2.gml</script>
     <script>scripts\calculate_y.gml</script>
-    <scripts name="Draw Curves">
-      <scripts name="trajectory">
-        <script>scripts\draw_throw_arc.gml</script>
-        <script>scripts\draw_throw_points.gml</script>
-        <script>scripts\draw_throw_bounce.gml</script>
-        <script>scripts\draw_throw_arc_width.gml</script>
-      </scripts>
-    </scripts>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>
     <font>fonts\fpsfont</font>
+    <font>fonts\font2</font>
+    <font>fonts\fnt_blockfont</font>
+    <font>fonts\font4</font>
   </fonts>
   <objects name="objects">
-    <objects name="controllers">
-      <object>objects\olevelcontrol</object>
-      <object>objects\ostick</object>
-    </objects>
     <objects name="menu objects">
       <object>objects\omenu</object>
       <object>objects\but_play</object>

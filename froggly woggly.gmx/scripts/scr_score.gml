@@ -1,16 +1,17 @@
 ///score drawing
 draw_set_alpha(1);
-draw_set_colour(c_black);
+
 
 if ofrog.active = 0
 {
 if  counting = 1 //&& global.scoretick = 0 
     {
+    draw_sprite_ext(sprite21,0,(view_wview/2),(view_hview/2)-325,3.2,2.4,0,c_white,1)
     draw_set_colour(c_black)
     draw_text((view_wview/2),(view_hview/2)-400,"Score: "+string(countingscore))
     draw_set_colour(c_red)
     draw_text((view_wview/2),(view_hview/2)-350,"Time: "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts: "+string(attempts2))
+    draw_text((view_wview/2),(view_hview/2)-300,"Deaths: "+string(attempts2))
     draw_set_colour(c_green)
     draw_text((view_wview/2),(view_hview/2)-250,"Levelscore: "+string(levelscore2)) 
      
@@ -30,6 +31,7 @@ if cphase = 0
         time2 +=2;
         countingscore -=2;
         valarm = 60;
+        audio_play_sound(sndping,1,0)
         }
     if time2 = 0 && valarm = 0 && cphase = 0
         {
@@ -44,6 +46,7 @@ if cphase = 1
         attempts2 +=2;
         countingscore -=2;
         valarm = 60;
+        audio_play_sound(sndping,1,0)
         }
     if attempts2 <= 0 && valarm = 0 && cphase = 1
         {
@@ -53,36 +56,21 @@ if cphase = 1
 
 if cphase = 2
 {
-    if levelscore2 > 10000
+    if levelscore2 > 150
             {
-            levelscore2 -= 50;
-            countingscore += 50;
+            levelscore2 -= 75;
+            countingscore += 75;
             valarm = 60;
+            audio_play_sound(sndping,1,0)
             }
-        if levelscore2 <= 10000 && levelscore2 >= 1000
+        if levelscore2 > 0 && levelscore2 <= 150
             {
-            levelscore2 -= 30;
-            countingscore += 30;
+            levelscore2 -= 1;
+            countingscore += 1;
             valarm = 60;
+            audio_play_sound(sndping,1,0)
             }
-        if levelscore2 < 1000 && levelscore2 >= 500
-            {
-            levelscore2 -= 10;
-            countingscore += 10;
-            valarm = 60;
-            }
-        if levelscore2 <= 500 && levelscore2 >= 180
-            {
-            levelscore2 -= 2;
-            countingscore += 2;
-            valarm = 60;
-            }
-        if levelscore2 <= 180 && levelscore2 > 0
-            {
-            levelscore2 --;
-            countingscore ++;
-            valarm = 60;
-            }
+
 
     if levelscore2 <= 0 && valarm = 0 && cphase = 2
         {

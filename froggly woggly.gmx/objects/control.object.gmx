@@ -55,6 +55,9 @@ debug = 1;
 else
 debug = 0;
 
+
+times = 0;
+
 //control scheme
 ctrls = 1
 
@@ -68,14 +71,16 @@ aimdir = 0
 //Joystick use init
 joystick = 0;
 
+
+vkesc = virtual_key_add(view_wview-(view_wview-2), view_hview-(view_hview-2), 54, 57, vk_escape)
 //Virtual keys init
 if debug = 1
 {
 //vku = virtual_key_add(view_wview-180, view_hview-210, 175, 100, vk_up); 
 //vkd = virtual_key_add(view_wview-180, view_hview-105, 175, 100, vk_down); 
-vks = virtual_key_add(view_wview-(view_wview-(10*scale)), view_hview-(210*scale), (175*scale), (200*scale), vk_space); 
+vks = virtual_key_add(view_wview-(view_wview-(10)), view_hview-(210), (175), (200), vk_space); 
 //vkt = virtual_key_add(view_wview-(view_wview-10), view_hview-105, 175, 100, vk_control); 
-vkesc = virtual_key_add(view_wview-(view_wview-10), view_hview-(view_hview-10), 175, 100, ord("M"))
+
 }
 
 //Makes sure room speed is at 60. Shouldn't be needed just in case
@@ -88,7 +93,7 @@ avgfps = 0;
 alarm[11] = room_speed/2;
 
 
-global.scale = 1;
+
 scale = 1;
 
 
@@ -114,7 +119,7 @@ scale = 1;
           <argument>
             <kind>1</kind>
             <string>///scoring memes
-global.attempts = 1;
+global.attempts = 0;
 frogspawnx = ofrog.x;
 frogspawny = ofrog.y;
 
@@ -212,91 +217,6 @@ alarm[11] = (room_speed/2);
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//scale = global.scale
-
-//joystick stuff
-
-//sets the "real" sizes to correspond with the GUI layer
-//realwidth = view_xview[0] + global.screenw;
-//realheight = view_yview[0] + global.screenh;
-/*
-//since all following is android only...
-if debug = 1
-
-{//START OF ANDROID ONLY SECTION
-
-if ctrls = 0 //for if the game uses joystick
-{
-
-//Sets the middle of the Joystick, and offsets it by scale
-jsmidx = realwidth-(250*scale);
-jsmidy = realheight-(160*scale);
-
-//Finds the direction of the Joystick
-jsdir = point_direction(jsmidx,jsmidy,mouse_x,mouse_y);
-jslen = point_distance(jsmidx,jsmidy,mouse_x,mouse_y);
-
-//Tethers the Joystick at 200 units from the touch pad center
-if point_distance(jsmidx,jsmidy,mouse_x,mouse_y) &lt;= (200*scale)
-{
-jsx = mouse_x;
-jsy = mouse_y;
-}
-
-if point_distance(jsmidx,jsmidy,mouse_x,mouse_y) &gt; (200*scale)
-{
-jsx = lengthdir_x((200*scale),jsdir) + jsmidx
-jsy = lengthdir_y((200*scale),jsdir) + jsmidy
-}
-
-//Simply returnsa a value if the joystick is activated, by reading if the mouse is within the touchpad
-if point_in_circle(mouse_x,mouse_y,jsmidx,jsmidy,(150*scale)) &amp;&amp; mouse_check_button(mb_left)
-{
-joystick = 1    //This doesn't deactivate once the input leaves the touch pad
-}
-
-//disables the joystick when the player releases the mouse/input
-if !mouse_check_button(mb_left) 
-{
-joystick = 0
-}
-
-//Aims the frog depending on the Joystick angle
-if joystick = 1
-{
-if (point_direction(jsmidx,jsmidy,jsx,jsy) &gt;= min(15,165) &amp;&amp; point_direction(jsmidx,jsmidy,jsx,jsy) &lt;= max(15,165))
-aimdir = point_direction(jsmidx,jsmidy,jsx,jsy);
-ofrog.aimdir = aimdir;
-}
-}
-}//END OF ANDROID ONLY SECTION
-
-*/
-
-
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -321,7 +241,7 @@ attempts = global.attempts
 if ofrog.active = 1
 {
 time2 = (time*10)*-1;
-attempts2 = ((attempts -1)*100)*-1;
+attempts2 = ((attempts )*100)*-1;
 levelscore2 = global.levelscore;
 countingscore = basescore;
 }
@@ -329,11 +249,31 @@ countingscore = basescore;
 //score ratio
 if ofrog.hasjumped = 1 &amp;&amp; ofrog.active = 0
 {
-global.totalscore = (basescore - (time*10) - (attempts-1)*100 + (global.levelscore))
+global.totalscore = (basescore - (time*10) - (attempts)*100 + (global.levelscore))
 }
 
 
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string></string>
           </argument>
         </arguments>
       </action>
@@ -356,6 +296,7 @@ global.totalscore = (basescore - (time*10) - (attempts-1)*100 + (global.levelsco
           <argument>
             <kind>1</kind>
             <string>global.levelscore += 20;
+ofrog.timer += 50
 </string>
           </argument>
         </arguments>
@@ -394,11 +335,6 @@ if debug != 1
 draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
 }
 
-
-/*
-vku = virtual_key_add(view_wview-180, view_hview-210, 175, 100, vk_up); 
-vkd = virtual_key_add(view_wview-180, view_hview-105, 175, 100, vk_down); 
-vks = virtual_key_add(view_wview-(view_wview-10), view_hview-210, 175, 200, vk_space); 
 </string>
           </argument>
         </arguments>
@@ -423,29 +359,56 @@ vks = virtual_key_add(view_wview-(view_wview-10), view_hview-210, 175, 200, vk_s
             <kind>1</kind>
             <string>//Initialises Draw Settings for this step
 draw_set_alpha(1);
+
+draw_set_font(fnt_blockfont);
+
 draw_set_colour(c_black);
+draw_rectangle(0,0,global.screenw,40,0)
+
+draw_set_colour(c_white);
+
+//virtual_key_show(vkesc)
+draw_sprite_ext(sprite22,0,29,30,1.5,1.5,0,c_white,1);
+
+
+
+
+
+
+
+
 if ofrog.active = 1
 {
+
 //charge bar top middle
 if global.chargebar = 0 or global.chargebar = 2
 {
-draw_rectangle((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(30*scale),1)
-draw_healthbar((global.screenw/2)-(300*scale),(20*scale),(global.screenw/2)+(300*scale),(30*scale),(100/110)*ofrog.jumpcharge,0,c_red,c_yellow,0,0,1)
+draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),1)
+draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
 }
 
 //text top right
 if global.leveltype = "mountain"
-{
-draw_text(global.screenw-230,20,"Height:"+string(ofrog.height)+"m")
-draw_text(global.screenw-230,50,"Highest:"+string(ofrog.maxheight)+"m")
-}
+    {
+    draw_text(global.screenw-230,20,"Height:"+string(ofrog.height)+"m")
+    draw_text(global.screenw-230,50,"Highest:"+string(ofrog.maxheight)+"m")
+    }
+    
+
+
+//normal level text
 if global.leveltype = 2
 {
-draw_set_halign(fa_left)
-draw_text(global.screenw-230,20,"time:"+string(ofrog.secs))
-draw_text(global.screenw-430,20,"points"+string(global.levelscore))
-draw_text(global.screenw-230,50,"tries:"+string(global.attempts))
-}
+    draw_set_halign(fa_left);
+    
+    draw_text(global.screenw-600,20,"points: "+string(global.levelscore))
+    draw_text(global.screenw-340,20,"Time: "+string(ofrog.secs))
+    draw_text(global.screenw-180,20,"Deaths: "+string(global.attempts))
+    draw_text((global.screenw/2)-(410),20,"power:")
+    }
+draw_set_colour(c_black);
+
+
 //Debug text Left of Screen
 draw_set_font(fpsfont);
 draw_set_halign(fa_left);
@@ -455,42 +418,6 @@ draw_text(30,140,"Steps:"+string(avgfps))
 //draw_text(30,180,ofrog.savex)
 draw_text(30,200,ofrog.hsp)
 draw_text(30,220,ofrog.vsp)
-
-//Sets Alpha and Draws Joystick Circle
-draw_set_alpha(0.5);
-if debug = 1 &amp;&amp; ctrls != 1
-{
-draw_circle(global.screenw-(250*scale),global.screenh-(160*scale),(150*scale),0);
-}
-
-//Debug = android, these show virtual keys. Commented out ones are obsolete.
-if debug = 1 &amp;&amp; ctrls = 0
-{
-//virtual_key_show(vku);
-//virtual_key_show(vkd);
-virtual_key_show(vks);
-//virtual_key_show(vkt);
-virtual_key_show(vkesc);
-}
-
-//draw power button 2
-//vks = virtual_key_add(view_wview-(view_wview-(10*scale)), view_hview-(210*scale), (175*scale), (200*scale), vk_space); 
-draw_set_alpha(0.8);
-//draw_rectangle(view_wview-(view_wview-(10*scale)), view_hview-(210*scale), view_wview-(175*scale), view_hview- (200*scale),0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -519,151 +446,6 @@ draw_set_alpha(1)
             <string>///score drawing
 
 script_execute(scr_score)
-
-
-/*
-draw_set_alpha(1);
-draw_set_colour(c_black);
-
-if ofrog.active = 0
-{
-if  counting = 1 //&amp;&amp; global.scoretick = 0 
-    {
-    draw_set_colour(c_black)
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
-    draw_set_colour(c_red)
-    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    draw_set_colour(c_green)
-    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2)) 
-    }
-}    
-
-
-if global.scoretick = 1
-    {
-    {
-    if time2 &gt; 0
-        {
-        time2 -=2;
-        countingscore -=2;
-        alarm[1] = 60;
-        }
-    if time2 &lt;= 0 &amp;&amp; alarm[1] &gt; 0 &amp;&amp; phase = 0
-        {
-        phase = 1;
-        }
-    }
-    
-    if time2 = 0
-        {
-        if attempts2 &gt; 0
-            {
-            attempts2 -=2;
-            countingscore -=2;
-            alarm[1] = 60;
-            }
-        if attempts2 &lt;= 0 &amp;&amp; alarm[1] &gt; 0 &amp;&amp; phase = 1
-            {
-            phase = 2;
-            }
-        }
-    }
-    
-    
-    
-    
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-/*   
-if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &gt; 0
-    {
-    draw_set_colour(c_black)
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
-    draw_set_colour(c_red)
-    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    attempts2 -=2;
-    countingscore -=2;
-    }
-     
-if global.scoretick = 1 &amp;&amp; time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &gt; 0
-    {
-    draw_set_colour(c_black)
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
-    draw_set_colour(c_red)
-    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    draw_set_colour(c_green)
-    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
-        
-        if levelscore2 &gt; 10000
-            {
-            levelscore2 -= 50;
-            countingscore += 50;
-            }
-        if levelscore2 &lt; 10000 &amp;&amp; levelscore2 &gt;= 1000
-            {
-            levelscore2 -= 25;
-            countingscore += 25;
-            }
-        if levelscore2 &lt; 1000 &amp;&amp; levelscore2 &gt;= 500
-            {
-            levelscore2 -= 10;
-            countingscore += 10;
-            }
-        if levelscore2 &lt; 500 &amp;&amp; levelscore2 &gt;= 180
-            {
-            levelscore2 -= 5;
-            countingscore += 5;
-            }
-        if levelscore2 &lt; 180 &amp;&amp; levelscore2 &gt;= 0
-            {
-            levelscore2 --;
-            countingscore ++;
-            }
-        }
-}
-if time2 &lt;= 0 &amp;&amp; attempts2 &lt;= 0 &amp;&amp; levelscore2 &lt;= 0 &amp;&amp; counting = 1
-    {
-    global.scoretick = 0
-    counting = 2
-    alarm[0] = 120
-    }
-
-if counting = 2
-{
-    draw_set_colour(c_black)
-    draw_text((view_wview/2),(view_hview/2)-400,"Score = "+string(countingscore))
-    draw_set_colour(c_red)
-    draw_text((view_wview/2),(view_hview/2)-350,"Time = "+string(time2))
-    draw_text((view_wview/2),(view_hview/2)-300,"Attempts = "+string(attempts2))
-    draw_set_colour(c_green)
-    draw_text((view_wview/2),(view_hview/2)-250,"Levelscore = "+string(levelscore2))
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </string>
           </argument>
@@ -836,55 +618,6 @@ debug = 0
     virtual_key_delete(vkesc)
     }
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="40">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//global.scale -= 0.1
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="38">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Scales game up and resets spacebar Virtual Key
-//global.scale += 0.1
-//virtual_key_delete(vks);
-//vks = virtual_key_add(view_wview-(view_wview-(10*scale)), view_hview-(210*scale), (175*scale), (200*scale), vk_space); 
 </string>
           </argument>
         </arguments>

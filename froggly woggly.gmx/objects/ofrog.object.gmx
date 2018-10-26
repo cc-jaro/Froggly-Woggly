@@ -180,11 +180,8 @@ mleftr = mouse_check_button_released(mb_left);
 
 keyturn = key_turn;
 keyaim = key_up + key_down ;
-//ctrls = 1
 
-//Sets up canaim. Mostly a useless feature thats obsolete but it has references so I can't delete it
-if (key_jump = 1 or key_jump = 0)
-canaim = 1;
+//movement code vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 
 //falling code
 if (vsp &lt; 36)
@@ -193,7 +190,8 @@ if (vsp &lt; 36)
 // Limits fall speed
 if vsp &gt; 36
 vsp = 36;
-
+    
+    //COLLISION CODE
 //Vertical Collision
 if (place_meeting(x,y+vsp,osolid))
 {
@@ -216,10 +214,6 @@ if (place_meeting(x+hsp,y,osolid))
 hsp *= ((0.5)*-1);
 }
 
-// calculation for hsp and vsp. Nice meme
-x += hsp;
-y += vsp;
-
 //checks if frog is on the ground and sets the grounded variable accordingly
 if (place_meeting(x,y+1,osolid))
 {
@@ -233,14 +227,14 @@ grounded = 0;
 //Just makes sure the frog cant move if he's on the ground. It doesnt work properly.
 if grounded = 1
 {
-hsp = 0;
-vsp = 0;
+    hsp = 0;
+    vsp = 0;
 }
 
 //very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix
 if grounded = 1 &amp;&amp; place_meeting(x,y,osolid)
 { 
-y-=6
+    y-=6
 }
 
 //The jumping code
@@ -257,13 +251,8 @@ if jumpcharge &gt; 0 &amp;&amp; key_jump = 0 &amp;&amp; ctrls != 1
         
         if hasjumped = 0
         hasjumped = 1;
-    
-        if jumptimer &gt; 0 // makes star if the frog jumps nicely
-        instance_create(x,y,ostar);
-        
-        if jbonus !=0// makes star if the frog jumps nicely
-        instance_create(x,y,ostar);
     }
+    
 //resets all the variables used for the jumping
 jumpcharge = 0; 
 charge = 1;
@@ -304,17 +293,6 @@ if (mleft = 1 ) &amp;&amp; control.debug = 0 &amp;&amp; ctrls != 1
         
 }
 
-
-//obsolete turning code. Leaving in in case I need to refactor it in the future
-if keyturn !=0
-{
-if (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
-aimdir = 135;
-
-if (aimdir &gt;= min(91,165) &amp;&amp; aimdir &lt;= max(91,165))
-aimdir = 45;
-}
-
 //Sets the image xscale (horizontal flip) depending on the direction the frog is pointing.
 if (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
 {
@@ -332,9 +310,10 @@ jumptimer --;
 
 //height
 if grounded = 1
-{
-height = round(((room_height-112) - self.y)/48)
-}
+    {
+    height = round(((room_height-112) - self.y)/48)
+    }
+
 if height &gt; maxheight
     {
     maxheight = height
@@ -351,6 +330,7 @@ if place_meeting(x,y,oflag) &amp;&amp; victory = 0
     ini_write_real("scores", "victory", 1);
     ini_close();
     }
+    
  //new control scheme 
  //this is the click and drag section
 if ctrls = 1
@@ -390,8 +370,14 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
 {
     if grounded = 1 //ensures the frog is on the ground for jumping
     {
-    hsp = round(lengthdir_x(jpower,aimdir))
-    vsp = round(lengthdir_y(jpower,aimdir))
+    if !place_meeting(x+round(lengthdir_x(jpower,aimdir)),y,osolid)
+        {
+        hsp = round(lengthdir_x(jpower,aimdir))
+        }
+    if !place_meeting(x,y+round(lengthdir_y(jpower,aimdir)),osolid)
+        {
+        vsp = round(lengthdir_y(jpower,aimdir))
+        }
     if hasjumped = 0
     hasjumped = 1;
     aiming = 0;
@@ -411,7 +397,7 @@ timer ++;
 secs = timer div 60;
 
 //falling down a pit
-if y &gt; (room_height+100)
+if y &gt; (room_height+100) or place_meeting(x,y,ospike)
     { //reset code. This should work for any deaths
     hsp = 0;
     vsp = 0;
@@ -434,7 +420,7 @@ if active = 0
     
     
 //spike death
-if place_meeting(x,y,ospike)
+/*
     {//reset code. This should work for any deaths
     hsp = 0;
     vsp = 0;
@@ -442,7 +428,7 @@ if place_meeting(x,y,ospike)
    x = control.frogspawnx;
   y = control.frogspawny;
     }
-    
+  */ 
 //enemy death
 if place_meeting(x,y,oenemy)
     {//reset code. This should work for any deaths
@@ -454,6 +440,13 @@ if place_meeting(x,y,oenemy)
     }
 
 image_index = grounded
+
+
+
+// calculation for hsp and vsp. Nice meme
+x += hsp;
+y += vsp;
+
 </string>
           </argument>
         </arguments>
@@ -585,11 +578,11 @@ if aiming = 1
     {
     window_set_cursor(cr_cross);
     draw_sprite_ext(sprite20,0,savex,savey,1,1,0,c_ltgray,0.8);
-    
-    draw_throw_arc_width2(x,y,(lengthdir_x(jpower,aimdir)),(lengthdir_y(jpower,aimdir)),0.75,0.5,osolid,3);
+    draw_set_alpha(0.6)
+    draw_throw_arc_width2(x,y,(lengthdir_x(jpower,aimdir)),(lengthdir_y(jpower,aimdir)),0.75,0.5,osolid,5);
     }   
 
-
+draw_set_alpha(1)
 
 if aiming = 0
 {
