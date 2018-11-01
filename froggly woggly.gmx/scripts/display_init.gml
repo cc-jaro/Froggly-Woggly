@@ -1,19 +1,14 @@
 ///display init
+
 //sets variables for display height and width, to read from for setting up other variables
 global.screenh = display_get_height();
 global.screenw = display_get_width();
 
 //Sets size of the window to be the same dimensions as the screen
-//window_set_size(global.screenw,global.screenh);
-
 
 //sets view height and width to screen height and width
 view_hview[0] = global.screenh;
 view_wview[0] = global.screenw;
-
-//sets view port to screen height and width(shouldn't be needed but is)
-//view_hport[0] = global.screenh;
-//view_wport[0] = global.screenw;
 
 //Sets the drawing surface to the new size. Shouldn't be needed but its a failsafe
 surface_resize(application_surface, global.screenw, global.screenh); 
@@ -31,4 +26,4 @@ if !view_enabled
     view_vborder[0] = view_hview[0] / 2;
     }
     
-//display_reset(0,true);
+

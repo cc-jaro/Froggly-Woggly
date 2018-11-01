@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>///instance activation
+instance_activate_all();
 instance_deactivate_all(true);
 instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
 instance_activate_object(control);
@@ -181,66 +182,28 @@ mleftr = mouse_check_button_released(mb_left);
 keyturn = key_turn;
 keyaim = key_up + key_down ;
 
-//movement code vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-
-//falling code
-if (vsp &lt; 36)
- vsp += grav;
-
-// Limits fall speed
-if vsp &gt; 36
-vsp = 36;
-    
-    //COLLISION CODE
-//Vertical Collision
-if (place_meeting(x,y+vsp,osolid))
-{
-    while (!place_meeting(x,y+sign(vsp),osolid))
-    {
-    audio_play_sound(choose(slap1,slap2,slap3),1,0)
-    y += sign(vsp);
-    jumptimer = 30   
-    }
-vsp = 0;
-}
-
-//horizontal collision
-if (place_meeting(x+hsp,y,osolid))
-{
-    while (!place_meeting(x+sign(hsp),y,osolid))
-    {
-    x += sign(hsp);
-    }
-hsp *= ((0.5)*-1);
-}
 
 //checks if frog is on the ground and sets the grounded variable accordingly
 if (place_meeting(x,y+1,osolid))
 {
 grounded = 1;
 }
-
-//And vice versa, sets the frog to not grounded if he isn't
-if (!place_meeting(x,y+1,osolid))
+else
 grounded = 0;
 
-//Just makes sure the frog cant move if he's on the ground. It doesnt work properly.
-if grounded = 1
-{
-    hsp = 0;
-    vsp = 0;
-}
 
-//very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix
-if grounded = 1 &amp;&amp; place_meeting(x,y,osolid)
-{ 
-    y-=6
-}
+if grounded = 0 or hsp != 0 or vsp != 0
+{ script_execute(scrfrog_movement) };
+
+// calculation for hsp and vsp. Nice meme
+x += hsp;
+y += vsp;
 
 //The jumping code
 if key_jump = 1 &amp;&amp; ctrls != 1
-jumpcharge += ((charge) + (jumpcharge/18))*chargemod; //This is the meat of the jumping code, charging up the jump
-
+{
+    jumpcharge += ((charge) + (jumpcharge/18))*chargemod; //This is the meat of the jumping code, charging up the jump
+}
 //begins the process of jumping
 if jumpcharge &gt; 0 &amp;&amp; key_jump = 0 &amp;&amp; ctrls != 1
 {
@@ -282,16 +245,6 @@ aimdir = 15;
 
 if aimdir &gt; 165
 aimdir = 165;
-
-//aiming for non android versions of the game. 
-if (mleft = 1 ) &amp;&amp; control.debug = 0 &amp;&amp; ctrls != 1
-{
-        script_execute(script2)
-        aimmod = sign(mouse_x-x);
-        if (point_direction(x,y,mouse_x,mouse_y) &gt;= min(15,165) &amp;&amp; point_direction(x,y,mouse_x,mouse_y) &lt;= max(15,165))
-        aimdir = point_direction(x,y,mouse_x,mouse_y);
-        
-}
 
 //Sets the image xscale (horizontal flip) depending on the direction the frog is pointing.
 if (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
@@ -370,13 +323,18 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
 {
     if grounded = 1 //ensures the frog is on the ground for jumping
     {
-    if !place_meeting(x+round(lengthdir_x(jpower,aimdir)),y,osolid)
+    if !place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
         {
-        hsp = round(lengthdir_x(jpower,aimdir))
+        hsp = (lengthdir_x(jpower,aimdir))
         }
-    if !place_meeting(x,y+round(lengthdir_y(jpower,aimdir)),osolid)
+        
+    if place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
         {
-        vsp = round(lengthdir_y(jpower,aimdir))
+        hsp = -((lengthdir_x(jpower,aimdir))/2)
+        }
+    if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
+        {
+        vsp = (lengthdir_y(jpower,aimdir))
         }
     if hasjumped = 0
     hasjumped = 1;
@@ -406,29 +364,13 @@ if y &gt; (room_height+100) or place_meeting(x,y,ospike)
     y = control.frogspawny;
     }
 
-//keeps frog within room
-if x &gt; room_width or x &lt; 0
-    {
-    hsp *= -1
-    }
-   
+
 //stops frog from moveing on collision with flag   
 if active = 0
     {
     hsp = 0
     }
-    
-    
-//spike death
-/*
-    {//reset code. This should work for any deaths
-    hsp = 0;
-    vsp = 0;
-    global.attempts ++;
-   x = control.frogspawnx;
-  y = control.frogspawny;
-    }
-  */ 
+
 //enemy death
 if place_meeting(x,y,oenemy)
     {//reset code. This should work for any deaths
@@ -443,9 +385,6 @@ image_index = grounded
 
 
 
-// calculation for hsp and vsp. Nice meme
-x += hsp;
-y += vsp;
 
 </string>
           </argument>
@@ -468,7 +407,7 @@ y += vsp;
           <argument>
             <kind>1</kind>
             <string>///secondary memes
-instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
+instance_activate_region(x-(global.screenw/1.5),y-(global.screenh/1.5),global.screenw*1.5,global.screenh*1.5,true);
 
 
 </string>

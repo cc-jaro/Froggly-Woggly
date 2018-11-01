@@ -129,6 +129,7 @@ global.levelscore = 0;
 basescore = 0;
 time = 0;
 counting = 0;
+scoretick = 0;
 
 valarm = 0;
 cphase = 0;
@@ -361,21 +362,12 @@ draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
 draw_set_alpha(1);
 
 draw_set_font(fnt_blockfont);
-
 draw_set_colour(c_black);
 draw_rectangle(0,0,global.screenw,40,0)
-
 draw_set_colour(c_white);
 
 //virtual_key_show(vkesc)
 draw_sprite_ext(sprite22,0,29,30,1.5,1.5,0,c_white,1);
-
-
-
-
-
-
-
 
 if ofrog.active = 1
 {
@@ -409,20 +401,13 @@ if global.leveltype = 2
 draw_set_colour(c_black);
 
 
-//Debug text Left of Screen
-draw_set_font(fpsfont);
-draw_set_halign(fa_left);
-draw_text(30,120,"Fps:"+string(fps))
-draw_text(30,140,"Steps:"+string(avgfps))
-//draw_text(30,160,ofrog.aiming)
-//draw_text(30,180,ofrog.savex)
-draw_text(30,200,ofrog.hsp)
-draw_text(30,220,ofrog.vsp)
+
 
 
 
 draw_set_alpha(1)
 }
+script_execute(scrdebug_text);
 </string>
           </argument>
         </arguments>
@@ -444,6 +429,7 @@ draw_set_alpha(1)
           <argument>
             <kind>1</kind>
             <string>///score drawing
+if !(global.leveltype) exit;
 
 script_execute(scr_score)
 

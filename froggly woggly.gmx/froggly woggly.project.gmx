@@ -22,6 +22,9 @@
     <sound>sound\sndping</sound>
   </sounds>
   <sprites name="sprites">
+    <sprites name="menu sprites">
+      <sprite>sprites\sarrow</sprite>
+    </sprites>
     <sprite>sprites\sprite0</sprite>
     <sprite>sprites\sprite1</sprite>
     <sprite>sprites\sprite2</sprite>
@@ -45,6 +48,7 @@
     <sprite>sprites\sprite20</sprite>
     <sprite>sprites\sprite21</sprite>
     <sprite>sprites\sprite22</sprite>
+    <sprite>sprites\sprite23</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -66,16 +70,22 @@
     <script>scripts\script2.gml</script>
     <script>scripts\draw_throw_arc_width2.gml</script>
     <script>scripts\calculate_y.gml</script>
+    <script>scripts\scrdebug_text.gml</script>
+    <script>scripts\scrfrog_movement.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>
     <font>fonts\fpsfont</font>
     <font>fonts\font2</font>
     <font>fonts\fnt_blockfont</font>
+    <font>fonts\fnt_blockfont2</font>
     <font>fonts\font4</font>
   </fonts>
   <objects name="objects">
     <objects name="menu objects">
+      <objects name="New menu">
+        <object>objects\obmenu</object>
+      </objects>
       <object>objects\omenu</object>
       <object>objects\but_play</object>
       <object>objects\but_config</object>
@@ -103,12 +113,14 @@
       <object>objects\ocheckpoint</object>
       <object>objects\levelflag</object>
       <object>objects\oflag</object>
+      <object>objects\opassthrough</object>
     </objects>
     <object>objects\ofrog</object>
     <object>objects\control</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
+    <room>rooms\rmenu2</room>
     <room>rooms\room1</room>
     <room>rooms\test_room</room>
     <room>rooms\room2</room>

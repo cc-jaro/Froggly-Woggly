@@ -115,6 +115,8 @@ room_goto(room1)
           <argument>
             <kind>1</kind>
             <string>draw_self();
+image_xscale = 1.5;
+image_yscale = 2;
 draw_set_halign(fa_center);
 draw_text(x,y,"Mountain Climb");
 </string>
