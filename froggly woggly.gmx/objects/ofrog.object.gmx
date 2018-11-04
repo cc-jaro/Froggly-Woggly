@@ -56,6 +56,8 @@ grav = 0.75;
 ctrls = 1
 hasjumped = 0;
 dead = 0;
+pause = 0;
+
 
 //init basic movement variables. hsp, vsp, jumpcharge and grounded
 hsp = 0;
@@ -168,6 +170,10 @@ circalpha = 0;
           <argument>
             <kind>1</kind>
             <string>///Main frog Step
+// if pause != 0 exit;
+
+
+
 //init key presses and variables for interactions
 key_jump = keyboard_check(vk_space) ;//or mouse_check_button(mb_left)
 key_up = keyboard_check(vk_up);
@@ -193,11 +199,13 @@ grounded = 0;
 
 
 if grounded = 0 or hsp != 0 or vsp != 0
+    
 { script_execute(scrfrog_movement) };
+
 
 // calculation for hsp and vsp. Nice meme
 x += hsp;
-y += vsp;
+y+= vsp;
 
 //The jumping code
 if key_jump = 1 &amp;&amp; ctrls != 1
@@ -409,7 +417,22 @@ image_index = grounded
             <string>///secondary memes
 instance_activate_region(x-(global.screenw/1.5),y-(global.screenh/1.5),global.screenw*1.5,global.screenh*1.5,true);
 
-
+if keyboard_check_pressed(vk_space)
+    {
+    if pause == 1 
+        {
+        pause = 0; 
+        exit
+        }
+    }
+    
+    {
+    if pause == 0
+        {
+        pause = 1; 
+        exit
+        }
+    }
 </string>
           </argument>
         </arguments>
