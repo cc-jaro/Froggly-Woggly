@@ -333,7 +333,7 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
     {
     if !place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
         {
-        hsp = (lengthdir_x(jpower,aimdir))
+        hsp += (lengthdir_x(jpower,aimdir))
         }
         
     if place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
@@ -342,7 +342,7 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
         }
     if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
         {
-        vsp = (lengthdir_y(jpower,aimdir))
+        vsp += (lengthdir_y(jpower,aimdir))
         }
     if hasjumped = 0
     hasjumped = 1;
@@ -488,7 +488,7 @@ image_index = 0;
 
 
 //victory;
-
+/*
 //draw settings for next part
 draw_set_alpha(0.8);
 draw_set_colour(c_yellow);

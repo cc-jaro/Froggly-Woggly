@@ -27,14 +27,14 @@
             <kind>1</kind>
             <string>//runs the display init
 script_execute(display_init)
-
+/*
 //creates the buttons that are in the game just now. Doesnt care about where they are just creates them. They sort themselves out
 instance_create(x,y,but_play)
 instance_create(x,y,but_music)
 instance_create(x,y,but_config)
 //instance_create(x,y,but_scale)
 instance_create(x,y,but_screen)
-
+*/
 //opens the ini to read some memes.
 ini_open("config.ini");
 maxheight = ini_read_real("scores", "maxheight", 0);
@@ -85,7 +85,7 @@ ini_close();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//init draw settings
+            <string>/*//init draw settings
 draw_set_font(fontmain);
 draw_set_colour(c_black);
 draw_set_halign(fa_center);

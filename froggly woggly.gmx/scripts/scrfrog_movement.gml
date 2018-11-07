@@ -36,9 +36,10 @@ if grounded = 1 && place_meeting(x,y,osolid)
 
 var fricmod = (1 * (abs(hsp)/4));
 //friction code
-if grounded = 1
+if grounded = 1 
 {
-    var vfric = 2 / fricmod
+    var vfric = (2 / fricmod) + (abs(vsp)/10)
+    
     if abs(hsp) > vfric
         {
         hsp -= vfric*sign(hsp)

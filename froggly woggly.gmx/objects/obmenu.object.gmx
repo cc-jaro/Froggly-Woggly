@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///engaging the menu array
 
+
 draw_set_font(fnt_blockfont2);
 xpos = 100;
 //ypos = 100;
@@ -65,6 +66,52 @@ armenu[3,4] = 0;
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//ini reading and setting of variables
+//runs the display init
+script_execute(display_init)
+
+//opens ini to read values
+ini_open("config.ini");
+global.music = ini_read_real("configs", "music", 1);
+global.fullscreen = ini_read_real("configs", "fullscreen", 1);
+ini_close(); 
+
+if global.fullscreen = 1
+{
+    window_set_fullscreen(true)
+}
+if global.fullscreen = 0
+{
+    window_set_fullscreen(false)
+}
+if global.music = 1
+{
+   if !audio_is_playing(clair_de_lune)
+                    {
+                    audio_play_sound(clair_de_lune,0,1)
+                    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="8" enumb="64">
       <action>
@@ -86,19 +133,23 @@ armenu[3,4] = 0;
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_top);
 
+butconfirm = keyboard_check_pressed(vk_space) or keyboard_check_pressed(vk_enter) or mouse_check_button_pressed(mb_left);
 
 
+
+var arh = array_height_2d(armenu)+1;
+var arl = array_length_2d(armenu,arh);
 var font = (fnt_blockfont2);
 var fsz = font_get_size(font);
 var spacer = (armenu[2,0]*1.2);
-var ypos = ((view_hview)-(armenu[2,0]+(4*spacer))) + spacer/2
-var arh = array_height_2d(armenu);
-var arl = array_length_2d(armenu,arh);
+
+var ypos = (view_hview)-(((armenu[2,0])*arh)+spacer)
+
 
 draw_set_font(font);
 {
 var i;
- for (i = 0; i &lt; arh+1; i += 1)
+ for (i = 0; i &lt; arh; i += 1)
  {
     {//draw the buttons and text
     draw_set_alpha(0.3);
@@ -119,14 +170,50 @@ if armenu[3,i] = 1
     {
     draw_rectangle(xpos,ypos+(i*spacer),xpos+(armenu[1,i]),ypos+armenu[2,i]+(i*spacer),1);
     }
-}
-}
+//put in a switch statement that will use cases declared in the create event?
+if butconfirm == 1 &amp;&amp; armenu[3,i] == 1
+    {
+    if i = 0
+        {
+        room_goto(rlevel1);
+        }
+    if i = 1
+        {
+        script_execute(scrmusic);
+        }
+    if i = 2
+        {
+        room_goto(room1);
+        }
+    if i = 3
+        {
+        game_end();
+        }
 
+    }
+}
+}
 
 script_execute(scrdebug_text)
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="27">
+      <action>
+        <libid>1</libid>
+        <id>332</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_end_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
   </events>

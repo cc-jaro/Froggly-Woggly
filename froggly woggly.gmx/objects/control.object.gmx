@@ -369,17 +369,16 @@ if ofrog.active = 1
 {
 
 //charge bar top middle
-if global.chargebar = 0 or global.chargebar = 2
-{
+
 draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),1)
 draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
-}
+
 
 //text top right
 if global.leveltype = "mountain"
     {
-    draw_text(global.screenw-230,20,"Height:"+string(ofrog.height)+"m")
-    draw_text(global.screenw-230,50,"Highest:"+string(ofrog.maxheight)+"m")
+    draw_text(global.screenw-340,20,"Height:"+string(ofrog.height)+"m")
+    draw_text(global.screenw-180,20,"Highest:"+string(ofrog.maxheight)+"m")
     }
     
 
@@ -434,7 +433,7 @@ script_execute(scr_score)
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="82">
+    <event eventtype="9" enumb="84">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -456,6 +455,22 @@ ofrog.y = frogspawny;
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>331</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_restart_game</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="9" enumb="79">

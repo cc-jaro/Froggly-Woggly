@@ -72,6 +72,7 @@
     <script>scripts\calculate_y.gml</script>
     <script>scripts\scrdebug_text.gml</script>
     <script>scripts\scrfrog_movement.gml</script>
+    <script>scripts\scrmusic.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>
