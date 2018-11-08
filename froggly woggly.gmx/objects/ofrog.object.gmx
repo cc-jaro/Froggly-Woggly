@@ -304,7 +304,13 @@ if ctrls = 1
         }
     }
 
- //setting and controlling aiming with click and drag  
+if aiming = 1
+    {
+    savex += hsp
+    savey += vsp
+    }
+    
+    //setting and controlling aiming with click and drag  
 if aiming = 1  &amp;&amp; active = 1
 {  
     if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270

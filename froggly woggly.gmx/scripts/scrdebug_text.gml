@@ -21,3 +21,8 @@ if instance_exists(ofrog)
 draw_text(30,200,ofrog.hsp)
 draw_text(30,220,ofrog.vsp)
 }
+
+if instance_exists(obmenu)
+{
+draw_text(30,200,obmenu.c)
+}

@@ -65,6 +65,12 @@
     <path>paths\aimpath</path>
   </paths>
   <scripts name="scripts">
+    <scripts name="menu scripts">
+      <script>scripts\scrbut1.gml</script>
+      <script>scripts\scrmusic.gml</script>
+      <script>scripts\scrbut3.gml</script>
+      <script>scripts\scrbut4.gml</script>
+    </scripts>
     <script>scripts\display_init.gml</script>
     <script>scripts\scr_score.gml</script>
     <script>scripts\script2.gml</script>
@@ -72,7 +78,6 @@
     <script>scripts\calculate_y.gml</script>
     <script>scripts\scrdebug_text.gml</script>
     <script>scripts\scrfrog_movement.gml</script>
-    <script>scripts\scrmusic.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>
