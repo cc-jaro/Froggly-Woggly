@@ -78,9 +78,9 @@ armenu[4,1] = scrmusic;
 armenu[4,2] = scrbut3;
 armenu[4,3] = scrbut4;
 armenu[4,4] = scrmusic;
-armenu[4,5] = 0;
-armenu[4,6] = 0;
-armenu[4,7] = 0;
+armenu[4,5] = -1;
+armenu[4,6] = -1;
+armenu[4,7] = -1;
 
 </string>
           </argument>

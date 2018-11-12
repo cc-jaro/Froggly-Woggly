@@ -20,7 +20,10 @@ if instance_exists(ofrog)
 {
 draw_text(30,200,ofrog.hsp)
 draw_text(30,220,ofrog.vsp)
+draw_text(30,240,ofrog.grounded)
+draw_text(30,260,ofrog.groundedm)
 }
+
 
 if instance_exists(obmenu)
 {

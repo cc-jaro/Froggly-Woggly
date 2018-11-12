@@ -30,6 +30,8 @@ instance_activate_all();
 instance_deactivate_all(true);
 instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
 instance_activate_object(control);
+instance_activate_object(osolidm);
+
 </string>
           </argument>
         </arguments>
@@ -64,6 +66,7 @@ hsp = 0;
 vsp = 0;
 jumpcharge = 0;
 grounded = 0;
+groundedm = 0;
 aiming = 0;
 timer = 0;
 milisecs = 0;
@@ -102,6 +105,7 @@ active = 1;
 drawcirc = 0;
 circalpha = 0;
 
+hhsp = 0
 </string>
           </argument>
         </arguments>
@@ -172,7 +176,8 @@ circalpha = 0;
             <string>///Main frog Step
 // if pause != 0 exit;
 
-
+if instance_exists(osolidm)
+instance_activate_object(osolidm);
 
 //init key presses and variables for interactions
 key_jump = keyboard_check(vk_space) ;//or mouse_check_button(mb_left)
@@ -190,23 +195,119 @@ keyaim = key_up + key_down ;
 
 
 //checks if frog is on the ground and sets the grounded variable accordingly
-if (place_meeting(x,y+1,osolid))
+if (place_meeting(x,y+1,osolid)) or (place_meeting(x,y+1,osolidm))
 {
 grounded = 1;
 }
 else
-grounded = 0;
+{
+grounded = 0
+}
 
 
-if grounded = 0 or hsp != 0 or vsp != 0
+//height
+if grounded = 1
+    {
+    height = round(((room_height-112) - self.y)/48)
+    }
+
+if height &gt; maxheight
+    {
+    maxheight = height
+    ini_open("config.ini");
+    ini_write_real("scores", "maxheight", maxheight);
+    ini_close(); 
+    }
+
+//victory memes
+if place_meeting(x,y,oflag) &amp;&amp; victory = 0
+    {
+    oflag.alarm[0] = 240
+    ini_open("config.ini");
+    ini_write_real("scores", "victory", 1);
+    ini_close();
+    }
     
-{ script_execute(scrfrog_movement) };
+ //new control scheme 
+ //this is the click and drag section
+if ctrls = 1
+    {
+    if mleftp = 1 &amp;&amp; grounded = 1
+        {
+        savex = mouse_x;
+        savey = mouse_y;
+        aiming = 1;
+        }
+    }
+
+if aiming = 1
+    {
+    savex += hsp
+    savey += vsp
+    }
+    
 
 
-// calculation for hsp and vsp. Nice meme
-x += hsp;
-y+= vsp;
+//timing code
+if hasjumped = 1 &amp;&amp; active = 1
+timer ++;
 
+//milisecs = timer div 6;
+secs = timer div 60;
+
+//falling down a pit
+if y &gt; (room_height+100) or place_meeting(x,y,ospike)
+    { //reset code. This should work for any deaths
+    hsp = 0;
+    vsp = 0;
+    global.attempts ++;
+    x = control.frogspawnx;
+    y = control.frogspawny;
+    }
+
+
+//stops frog from moveing on collision with flag   
+if active = 0
+    {
+    hsp = 0
+    }
+
+//enemy death
+if place_meeting(x,y,oenemy)
+    {//reset code. This should work for any deaths
+    hsp = 0;
+    vsp = 0;
+    global.attempts ++;
+   x = control.frogspawnx;
+  y = control.frogspawny;
+    }
+
+image_index = grounded
+
+//runs collision script (must be at end)
+if grounded = 0  or vsp != 0 or hsp != 0
+    {scrfrog_movement() };
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///jumping
 //The jumping code
 if key_jump = 1 &amp;&amp; ctrls != 1
 {
@@ -269,46 +370,6 @@ image_xscale = -1;
 if jumptimer &gt; 0
 jumptimer --;
 
-//height
-if grounded = 1
-    {
-    height = round(((room_height-112) - self.y)/48)
-    }
-
-if height &gt; maxheight
-    {
-    maxheight = height
-    ini_open("config.ini");
-    ini_write_real("scores", "maxheight", maxheight);
-    ini_close(); 
-    }
-
-//victory memes
-if place_meeting(x,y,oflag) &amp;&amp; victory = 0
-    {
-    oflag.alarm[0] = 240
-    ini_open("config.ini");
-    ini_write_real("scores", "victory", 1);
-    ini_close();
-    }
-    
- //new control scheme 
- //this is the click and drag section
-if ctrls = 1
-    {
-    if mleftp = 1 &amp;&amp; grounded = 1
-        {
-        savex = mouse_x;
-        savey = mouse_y;
-        aiming = 1;
-        }
-    }
-
-if aiming = 1
-    {
-    savex += hsp
-    savey += vsp
-    }
     
     //setting and controlling aiming with click and drag  
 if aiming = 1  &amp;&amp; active = 1
@@ -344,8 +405,13 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
         
     if place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
         {
-        hsp = -((lengthdir_x(jpower,aimdir))/2)
+        hsp = -((lengthdir_x(jpower,aimdir))/2)  
         }
+    
+         
+        
+        
+        
     if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
         {
         vsp += (lengthdir_y(jpower,aimdir))
@@ -354,50 +420,13 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
     hasjumped = 1;
     aiming = 0;
     jumpcharge = 0;
+    grounded = 0
     }
 }
 
 //caps jumpcharge
 if jumpcharge &gt; 110
 jumpcharge = 110;
-
-//timing code
-if hasjumped = 1 &amp;&amp; active = 1
-timer ++;
-
-//milisecs = timer div 6;
-secs = timer div 60;
-
-//falling down a pit
-if y &gt; (room_height+100) or place_meeting(x,y,ospike)
-    { //reset code. This should work for any deaths
-    hsp = 0;
-    vsp = 0;
-    global.attempts ++;
-    x = control.frogspawnx;
-    y = control.frogspawny;
-    }
-
-
-//stops frog from moveing on collision with flag   
-if active = 0
-    {
-    hsp = 0
-    }
-
-//enemy death
-if place_meeting(x,y,oenemy)
-    {//reset code. This should work for any deaths
-    hsp = 0;
-    vsp = 0;
-    global.attempts ++;
-   x = control.frogspawnx;
-  y = control.frogspawny;
-    }
-
-image_index = grounded
-
-
 
 
 </string>
@@ -422,6 +451,8 @@ image_index = grounded
             <kind>1</kind>
             <string>///secondary memes
 instance_activate_region(x-(global.screenw/1.5),y-(global.screenh/1.5),global.screenw*1.5,global.screenh*1.5,true);
+nearestmove = instance_nearest(x,y,osolidm)
+
 
 if keyboard_check_pressed(vk_space)
     {
@@ -439,6 +470,8 @@ if keyboard_check_pressed(vk_space)
         exit
         }
     }
+
+
 </string>
           </argument>
         </arguments>
