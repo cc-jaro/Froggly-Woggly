@@ -19,10 +19,14 @@ if (place_meeting(x+hsp,y,osolid))
 hsp *= ((0.5)*-1);
 }    
 
+var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osolidm).hsp);
+
+
+
 //horizontal collision moving
 if (place_meeting(x+hsp,y,osolidm))
 {
-    while (!place_meeting(x+sign(hsp),y,osolidm)) 
+    while (!place_meeting(x+(sign(hsp))-(instnmh),y,osolidm)) 
     {
     x += sign(hsp);
     }
