@@ -16,7 +16,9 @@ if (place_meeting(x+hsp,y,osolid))
     {
     x += sign(hsp);
     }
+    
 hsp *= ((0.5)*-1);
+
 }    
 
 var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osolidm).hsp);
@@ -24,13 +26,13 @@ var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osol
 
 
 //horizontal collision moving
-if (place_meeting(x+hsp,y,osolidm))
+if (place_meeting((x+hsp)+(instnmh),y,osolidm))
 {
-    while (!place_meeting(x+(sign(hsp))-(instnmh),y,osolidm)) 
+    while (!place_meeting(x+(sign(hsp)),y,osolidm)) 
     {
     x += sign(hsp);
     }
-hsp *= ((0.5)*-1);
+hsp *= ((0.5) * -1);
 }    
 
 //Vertical Collision
