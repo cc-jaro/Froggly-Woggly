@@ -15,6 +15,7 @@ if tstep<=0
 return false;
 
 draw_primitive_begin(pr_trianglestrip);
+draw_set_colour(c_fuchsia);
 for (var t=0; nexty<room_height; t+=tstep)
 {   nextx=t*hi+xi;
     

@@ -1,5 +1,5 @@
 var fricmod = (1 * (abs(hsp)/4));
-var vfric = (2 / fricmod) + (abs(vsp)/10)
+var vfric = (2 / fricmod) + (abs(vsp)/10);
 
 //falling code
 if (vsp < 36)
@@ -16,7 +16,7 @@ if (place_meeting(x+hsp,y,osolid))
     {
     x += sign(hsp);
     }
-    
+if abs(hsp) > 10
 hsp *= ((0.5)*-1);
 
 }    
@@ -26,7 +26,7 @@ var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osol
 
 
 //horizontal collision moving
-if (place_meeting((x+hsp)+(instnmh),y,osolidm))
+if (place_meeting((x+hsp)+(instnmh),y,osolidm)) && !(place_meeting(x,y+1,osolid))
 {
     while (!place_meeting(x+(sign(hsp)),y,osolidm)) 
     {
@@ -47,8 +47,8 @@ if (place_meeting(x,y+vsp,osolid))
 vsp = 0;
 }
 
-//Vertical Collision
-if (place_meeting(x,y+vsp,osolidm))
+//Vertical Collision moving
+if (place_meeting(x,y+vsp,osolidm)) && !(place_meeting(x,y+1,osolid))
 {
     while (!place_meeting(x,y+sign(vsp),osolidm))
     {
@@ -56,10 +56,17 @@ if (place_meeting(x,y+vsp,osolidm))
     y += sign(vsp);
     jumptimer = 30   
     }
-vsp = 0;
-grounded = 1
-hsp = instance_nearest(x,y,osolidm).hsp
-vfric = 0
+
+if vsp >= 0
+{
+    grounded = 1
+    if hsp != instance_nearest(x,y,osolidm).hsp
+        {
+        hsp = instance_nearest(x,y,osolidm).hsp
+        }
+    }
+    vfric = 0
+    vsp = 0;
 }
 
 //very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix

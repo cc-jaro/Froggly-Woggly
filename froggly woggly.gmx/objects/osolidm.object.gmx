@@ -36,7 +36,7 @@ else
 above = 0
 
 alarm[0] = 1
-alarm[1] = 180
+alarm[1] = 90
 hsp = 5
 </string>
           </argument>

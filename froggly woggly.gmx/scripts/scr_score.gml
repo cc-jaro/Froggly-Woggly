@@ -34,8 +34,8 @@ if cphase = 0
     {
     if abs(time2) > 0
         {
-        time2 +=2;
-        countingscore -=2;
+        time2 +=4;
+        countingscore -=4;
         valarm = 60;
         //audio_play_sound(sndping,1,0)
         }
@@ -49,8 +49,8 @@ if cphase = 1
     {     
     if time2 = 0 && abs(attempts2) > 0
         {
-        attempts2 +=2;
-        countingscore -=2;
+        attempts2 +=4;
+        countingscore -=4;
         valarm = 60;
         //audio_play_sound(sndping,1,0)
         }
@@ -64,8 +64,8 @@ if cphase = 2
 {
     if levelscore2 > 150
             {
-            levelscore2 -= 25;
-            countingscore += 25;
+            levelscore2 -= 150;
+            countingscore += 150;
             valarm = 60;
             //audio_play_sound(sndping,1,0)
             }
