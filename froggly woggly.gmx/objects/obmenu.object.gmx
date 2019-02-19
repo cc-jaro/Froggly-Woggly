@@ -224,7 +224,7 @@ if c != -1
 
  //fps text among other things  
 script_execute(scrdebug_text)
-show_debug_message(i)
+
 </string>
           </argument>
         </arguments>
