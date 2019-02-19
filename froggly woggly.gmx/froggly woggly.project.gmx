@@ -31,6 +31,7 @@
     <sprite>sprites\sprite3</sprite>
     <sprite>sprites\sprite4</sprite>
     <sprite>sprites\sprite5</sprite>
+    <sprite>sprites\sprite25</sprite>
     <sprite>sprites\sprite12</sprite>
     <sprite>sprites\sbutton</sprite>
     <sprite>sprites\sprite10</sprite>
@@ -116,6 +117,7 @@
       <object>objects\osolidsmall</object>
       <object>objects\ospike</object>
       <object>objects\osolid</object>
+      <object>objects\osolidm</object>
       <object>objects\ocheckpoint</object>
       <object>objects\levelflag</object>
       <object>objects\oflag</object>

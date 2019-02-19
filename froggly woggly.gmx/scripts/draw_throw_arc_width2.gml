@@ -2,7 +2,7 @@
 //Draws a trajectory given the initial data
 var xi=argument[0], yi=argument[1], hi=argument[2], vi=argument[3], a=argument[4]/2, tstep=argument[5], object=argument[6], w=argument[7]/2, have_max=(argument_count==9);
 var max_vel=0;
-var len = jumpcharge*2.5
+var len = jumpcharge*3
 
 
 if have_max
@@ -15,6 +15,7 @@ if tstep<=0
 return false;
 
 draw_primitive_begin(pr_trianglestrip);
+draw_set_colour(c_fuchsia);
 for (var t=0; nexty<room_height; t+=tstep)
 {   nextx=t*hi+xi;
     

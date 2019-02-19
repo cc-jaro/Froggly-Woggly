@@ -30,6 +30,8 @@ instance_activate_all();
 instance_deactivate_all(true);
 instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
 instance_activate_object(control);
+instance_activate_object(osolidm);
+
 </string>
           </argument>
         </arguments>
@@ -64,6 +66,7 @@ hsp = 0;
 vsp = 0;
 jumpcharge = 0;
 grounded = 0;
+groundedm = 0;
 aiming = 0;
 timer = 0;
 milisecs = 0;
@@ -102,6 +105,7 @@ active = 1;
 drawcirc = 0;
 circalpha = 0;
 
+hhsp = 0
 </string>
           </argument>
         </arguments>
@@ -172,7 +176,8 @@ circalpha = 0;
             <string>///Main frog Step
 // if pause != 0 exit;
 
-
+if instance_exists(osolidm)
+instance_activate_object(osolidm);
 
 //init key presses and variables for interactions
 key_jump = keyboard_check(vk_space) ;//or mouse_check_button(mb_left)
@@ -190,84 +195,17 @@ keyaim = key_up + key_down ;
 
 
 //checks if frog is on the ground and sets the grounded variable accordingly
-if (place_meeting(x,y+1,osolid))
+if (place_meeting(x,y+1,osolid)) or (place_meeting(x,y+1,osolidm))
 {
 grounded = 1;
 }
 else
-grounded = 0;
-
-
-if grounded = 0 or hsp != 0 or vsp != 0
-    
-{ script_execute(scrfrog_movement) };
-
-
-// calculation for hsp and vsp. Nice meme
-x += hsp;
-y+= vsp;
-
-//The jumping code
-if key_jump = 1 &amp;&amp; ctrls != 1
 {
-    jumpcharge += ((charge) + (jumpcharge/18))*chargemod; //This is the meat of the jumping code, charging up the jump
-}
-//begins the process of jumping
-if jumpcharge &gt; 0 &amp;&amp; key_jump = 0 &amp;&amp; ctrls != 1
-{
-    if grounded = 1 //ensures the frog is on the ground for jumping
-    {
-    hsp = (lengthdir_x(jpower,aimdir))
-    vsp = lengthdir_y(jpower,aimdir)
-        
-        if hasjumped = 0
-        hasjumped = 1;
-    }
-    
-//resets all the variables used for the jumping
-jumpcharge = 0; 
-charge = 1;
-jumptimer = 0;
+grounded = 0
 }
 
-//Jpower calculation
-jpower = (jumpcharge/5.5) + (jumpcharge*0.075)
 
-//charge stuff. these 2 lines allow the charge to reverse itself at full or empty.
-if jumpcharge &gt; 110
-chargemod = -1;
 
-if jumpcharge &lt; 2
-chargemod = 1;
-
-//aiming, using buttons. Includes clamping
-if keyaim != 0 &amp;&amp; (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
-aimdir += 1 * keyaim;
-
-if keyaim != 0 &amp;&amp; (aimdir &gt;= min(90.1,165) &amp;&amp; aimdir &lt;= max(90.1,165))
-aimdir -= 1 * keyaim;
-
-//Fully clamps the aim system just incase something goes wrong previously
-if aimdir &lt; 15
-aimdir = 15;
-
-if aimdir &gt; 165
-aimdir = 165;
-
-//Sets the image xscale (horizontal flip) depending on the direction the frog is pointing.
-if (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
-{
-image_xscale = 1;
-}
-
-if (aimdir &gt;= min(90.1,165) &amp;&amp; aimdir &lt;= max(90.1,165))
-{
-image_xscale = -1;
-}
-
-//jumptimer
-if jumptimer &gt; 0
-jumptimer --;
 
 //height
 if grounded = 1
@@ -310,56 +248,7 @@ if aiming = 1
     savey += vsp
     }
     
-    //setting and controlling aiming with click and drag  
-if aiming = 1  &amp;&amp; active = 1
-{  
-    if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270
-    {
-        aimdir = 165
-    }
-    if point_direction(mouse_x,mouse_y,savex,savey) &lt; 15 or point_direction(mouse_x,mouse_y,savex,savey) &gt; 270
-    {
-        aimdir = 15
-    }
-    if point_direction(mouse_x,mouse_y,savex,savey) &lt; 165 &amp;&amp; point_direction(mouse_x,mouse_y,savex,savey) &gt; 15
-    {
-        aimdir = point_direction(mouse_x,mouse_y,savex,savey)
-    }
-}    
-//aiming with click and drag
-if aiming = 1 &amp;&amp; active = 1
-    {
-    jumpcharge = point_distance(mouse_x,mouse_y,savex,savey)/5
-    }
 
-//jumping code for click and drag
-if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
-{
-    if grounded = 1 //ensures the frog is on the ground for jumping
-    {
-    if !place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
-        {
-        hsp += (lengthdir_x(jpower,aimdir))
-        }
-        
-    if place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
-        {
-        hsp = -((lengthdir_x(jpower,aimdir))/2)
-        }
-    if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
-        {
-        vsp += (lengthdir_y(jpower,aimdir))
-        }
-    if hasjumped = 0
-    hasjumped = 1;
-    aiming = 0;
-    jumpcharge = 0;
-    }
-}
-
-//caps jumpcharge
-if jumpcharge &gt; 110
-jumpcharge = 110;
 
 //timing code
 if hasjumped = 1 &amp;&amp; active = 1
@@ -395,9 +284,129 @@ if place_meeting(x,y,oenemy)
   y = control.frogspawny;
     }
 
+    
+//squishy death    
+if (place_meeting(x+1,y,osolid) &amp; place_meeting(x-1,y,osolid)) 
+    {//reset code. This should work for any deaths
+    hsp = 0;
+    vsp = 0;
+    global.attempts ++;
+    x = control.frogspawnx;
+    y = control.frogspawny;
+    }
+    
+    
 image_index = grounded
 
+//runs collision script (must be at end)
+//if grounded = 0  or vsp != 0 or hsp != 0
+//    {scrfrog_movement() };
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///jumping
 
+//Jpower calculation
+jpower = (jumpcharge/5.5) + (jumpcharge*0.075)
+
+//Fully clamps the aim system 
+clamp(aimdir,15,165);
+
+//Sets the image xscale (horizontal flip) depending on the direction the frog is pointing.
+if (aimdir &gt;= min(15,90) &amp;&amp; aimdir &lt;= max(15,90))
+{
+image_xscale = 1;
+}
+
+if (aimdir &gt;= min(90.1,165) &amp;&amp; aimdir &lt;= max(90.1,165))
+{
+image_xscale = -1;
+}
+
+//jumptimer
+if jumptimer &gt; 0
+jumptimer --;
+
+    
+//setting and controlling aiming with click and drag  
+//this code is for keeping the aiming correct. There's probably a faster easier way to do it but tbh this is ok for me
+if aiming = 1  &amp;&amp; active = 1
+{
+
+    if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270
+    {
+        aimdir = 165
+    }
+    if point_direction(mouse_x,mouse_y,savex,savey) &lt; 15 or point_direction(mouse_x,mouse_y,savex,savey) &gt; 270
+    {
+        aimdir = 15
+    }
+  
+    if point_direction(mouse_x,mouse_y,savex,savey) &lt;= 165 &amp;&amp; point_direction(mouse_x,mouse_y,savex,savey) &gt;= 15
+    {
+        aimdir = point_direction(mouse_x,mouse_y,savex,savey)
+    }  
+}    
+
+
+//aiming with click and drag
+if aiming = 1 &amp;&amp; active = 1
+    {
+    jumpcharge = point_distance(mouse_x,mouse_y,savex,savey)/5
+    }
+
+//jumping code for click and drag
+if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
+{
+    if grounded = 1 //ensures the frog is on the ground for jumping
+    {
+    grounded = 0
+    if !place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
+        {
+        hsp += (lengthdir_x(jpower,aimdir))
+        }
+        
+    if place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
+        {
+        hsp = -((lengthdir_x(jpower,aimdir))/2)  
+        }
+    
+         
+        
+        
+        
+    if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
+        {
+        vsp += (lengthdir_y(jpower,aimdir))
+        }
+    if hasjumped = 0
+    hasjumped = 1;
+    aiming = 0;
+    jumpcharge = 0;
+    grounded = 0
+    }
+}
+
+//caps jumpcharge
+if jumpcharge &gt; 110
+jumpcharge = 110;
 
 
 </string>
@@ -422,6 +431,8 @@ image_index = grounded
             <kind>1</kind>
             <string>///secondary memes
 instance_activate_region(x-(global.screenw/1.5),y-(global.screenh/1.5),global.screenw*1.5,global.screenh*1.5,true);
+nearestmove = instance_nearest(x,y,osolidm)
+
 
 if keyboard_check_pressed(vk_space)
     {
@@ -439,6 +450,150 @@ if keyboard_check_pressed(vk_space)
         exit
         }
     }
+
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///collision 2
+var fricmod = (1 * (abs(hsp)/4));
+var vfric = (2 / fricmod) + (abs(vsp)/10);
+
+//falling code
+if (vsp &lt; 36)
+ vsp += grav;
+
+// Limits fall speed
+if vsp &gt; 36
+vsp = 36;
+
+//horizontal collision
+if (place_meeting(x+hsp,y,osolid))
+{
+    while (!place_meeting(x+sign(hsp),y,osolid)) 
+    {
+    x += sign(hsp);
+    }
+if abs(hsp) &gt; 10
+hsp *= ((0.5)*-1);
+
+}    
+
+var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osolidm).hsp);
+
+
+
+//horizontal collision moving
+if (place_meeting((x+hsp)+(instnmh),y,osolidm)) //&amp;&amp; !(place_meeting(x,y+1,osolid))
+{
+    while (!place_meeting(x+(sign(hsp)),y,osolidm)) 
+    {
+    x += sign(hsp);
+    }
+hsp *= ((0.5) * -1);
+}    
+
+var instmh = instance_nearest(x,y,osolidm)    
+    
+if place_meeting(x-7,y,osolidm) or place_meeting(x+7,y,osolidm)
+{
+if abs(hsp) &lt; abs(instmh.hsp)
+    {
+        {
+        hsp += instmh.hsp
+        }
+    }
+}    
+//Vertical Collision
+if (place_meeting(x,y+vsp,osolid))
+{
+    while (!place_meeting(x,y+sign(vsp),osolid))
+    {
+    audio_play_sound(choose(slap1,slap2,slap3),1,0)
+    y += sign(vsp);
+    jumptimer = 30   
+    }
+vsp = 0;
+}
+
+//Vertical Collision moving
+if (place_meeting(x,y+vsp,osolidm)) &amp;&amp; !(place_meeting(x,y+1,osolid))
+{
+    {
+    while (!place_meeting(x,y+sign(vsp),osolidm))
+    {
+    audio_play_sound(choose(slap1,slap2,slap3),1,0)
+    y += sign(vsp);
+    jumptimer = 30   
+    }
+
+if vsp &gt;= 0
+{
+    grounded = 1
+    if hsp != instance_nearest(x,y,osolidm).hsp
+        {
+        hsp = instance_nearest(x,y,osolidm).hsp
+        }
+    }
+    vfric = 0
+    vsp = 0;
+}
+}
+//very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix
+if grounded = 1 &amp;&amp; place_meeting(x,y,osolid)
+{ 
+    y-=6
+}
+
+
+//friction code
+if grounded = 1 
+{
+    
+    
+    if abs(hsp) &gt; vfric
+        {
+        hsp -= (vfric*sign(hsp))
+        }
+    if abs(hsp) &lt;= vfric &amp;&amp; vsp = 0
+        {
+        hsp = 0
+        }  
+    //hsp = 0;
+    //vsp = 0;
+}
+
+//keeps frog within room
+if x &gt; room_width or x &lt; 0
+    {
+    hsp *= -1
+    }
+    
+
+
+
+// calculation for hsp and vsp. Nice meme
+x += round(hsp);
+y += round(vsp);
+
+
 </string>
           </argument>
         </arguments>

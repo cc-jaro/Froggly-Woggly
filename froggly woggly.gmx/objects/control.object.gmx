@@ -376,9 +376,11 @@ draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),(100/
 
 //text top right
 if global.leveltype = "mountain"
+
     {
-    draw_text(global.screenw-340,20,"Height:"+string(ofrog.height)+"m")
-    draw_text(global.screenw-180,20,"Highest:"+string(ofrog.maxheight)+"m")
+    draw_set_halign(fa_left);
+    draw_text(global.screenw-600,0,"Height:"+string(ofrog.height)+"m")
+    draw_text(global.screenw-220,0,"Highest:"+string(ofrog.maxheight)+"m")
     }
     
 
