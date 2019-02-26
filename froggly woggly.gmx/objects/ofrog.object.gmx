@@ -451,17 +451,7 @@ if keyboard_check_pressed(vk_space)
         }
     }
 
-var instmh = instance_nearest(x,y,osolidm)    
-    
-if place_meeting(x-7,y,osolidm) or place_meeting(x+7,y,osolidm)
-{
-if abs(hsp) &lt; abs(instmh.hsp)
-    {
-        {
-        hsp += instmh.hsp
-        }
-    }
-}    
+
 </string>
           </argument>
         </arguments>
@@ -520,6 +510,17 @@ if (place_meeting((x+hsp)+(instnmh),y,osolidm)) //&amp;&amp; !(place_meeting(x,y
 hsp *= ((0.5) * -1);
 }    
 
+var instmh = instance_nearest(x,y,osolidm)    
+    
+if place_meeting(x-7,y,osolidm) or place_meeting(x+7,y,osolidm)
+{
+if abs(hsp) &lt; abs(instmh.hsp)
+    {
+        {
+        hsp += instmh.hsp
+        }
+    }
+}    
 //Vertical Collision
 if (place_meeting(x,y+vsp,osolid))
 {
@@ -535,6 +536,7 @@ vsp = 0;
 //Vertical Collision moving
 if (place_meeting(x,y+vsp,osolidm)) &amp;&amp; !(place_meeting(x,y+1,osolid))
 {
+    {
     while (!place_meeting(x,y+sign(vsp),osolidm))
     {
     audio_play_sound(choose(slap1,slap2,slap3),1,0)
@@ -553,7 +555,7 @@ if vsp &gt;= 0
     vfric = 0
     vsp = 0;
 }
-
+}
 //very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix
 if grounded = 1 &amp;&amp; place_meeting(x,y,osolid)
 { 
