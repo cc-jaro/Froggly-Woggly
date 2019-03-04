@@ -604,6 +604,14 @@
     <instance objName="oding" x="5448" y="2088" name="inst_E481B10A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oding" x="5472" y="2088" name="inst_3644AEB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolidm" x="1248" y="2280" name="inst_F85B4C93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="264" y="2088" name="inst_7CB1AE75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="312" y="2088" name="inst_515101A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="360" y="2088" name="inst_A9A7AD6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="408" y="2088" name="inst_DB810A1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="456" y="2088" name="inst_F1E7C2EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="504" y="2088" name="inst_6D01C627" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="552" y="2088" name="inst_2EE3F104" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="600" y="2088" name="inst_08D5A35F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

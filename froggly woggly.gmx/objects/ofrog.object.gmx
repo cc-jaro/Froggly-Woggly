@@ -72,6 +72,8 @@ timer = 0;
 milisecs = 0;
 secs = 0;
 
+vfric = 0;
+
 //init basic aiming variables. ensure Charge is 0.75, and aimmod and chargemod is 1
 charge = 0.75;
 aimdir = 0
@@ -195,7 +197,7 @@ keyaim = key_up + key_down ;
 
 
 //checks if frog is on the ground and sets the grounded variable accordingly
-if (place_meeting(x,y+1,osolid)) or (place_meeting(x,y+1,osolidm))
+if (place_meeting(x,y+1,osolid)) or (place_meeting(x,y+1,osolidm)) or ((place_meeting(x,y+1,opassthrough)) &amp;&amp; vsp &gt;= 0)
 {
 grounded = 1;
 }
@@ -284,9 +286,9 @@ if place_meeting(x,y,oenemy)
   y = control.frogspawny;
     }
 
-    
+  /*  
 //squishy death    
-if (place_meeting(x+1,y,osolid) &amp; place_meeting(x-1,y,osolid)) 
+if collision_line(x,y,x+19,y,osolid,1,1) &amp;&amp; collision_line(x,y,x-19,y,osolid,1,1)//(place_meeting(x+1,y,osolid) &amp;&amp; place_meeting(x-1,y,osolid)) 
     {//reset code. This should work for any deaths
     hsp = 0;
     vsp = 0;
@@ -294,7 +296,12 @@ if (place_meeting(x+1,y,osolid) &amp; place_meeting(x-1,y,osolid))
     x = control.frogspawnx;
     y = control.frogspawny;
     }
-    
+ */
+ 
+if place_meeting(x+hsp,y,osolid) &amp;&amp; place_meeting(x-hsp,y,osolid)
+    {
+    scr_die();
+    }  
     
 image_index = grounded
 
@@ -352,11 +359,11 @@ if aiming = 1  &amp;&amp; active = 1
 
     if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270
     {
-        aimdir = 165
+        aimdir = 165 // max aimdir
     }
     if point_direction(mouse_x,mouse_y,savex,savey) &lt; 15 or point_direction(mouse_x,mouse_y,savex,savey) &gt; 270
     {
-        aimdir = 15
+        aimdir = 15  // min aimdir
     }
   
     if point_direction(mouse_x,mouse_y,savex,savey) &lt;= 165 &amp;&amp; point_direction(mouse_x,mouse_y,savex,savey) &gt;= 15
@@ -378,6 +385,9 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
     if grounded = 1 //ensures the frog is on the ground for jumping
     {
     grounded = 0
+    x += hsp
+    vsp += (lengthdir_y(jpower,aimdir))    
+    
     if !place_meeting(x+(lengthdir_x(jpower,aimdir)),y,osolid)
         {
         hsp += (lengthdir_x(jpower,aimdir))
@@ -388,22 +398,16 @@ if jumpcharge &gt; 0 &amp;&amp; mleft = 0 &amp;&amp; active = 1
         hsp = -((lengthdir_x(jpower,aimdir))/2)  
         }
     
-         
+}            
         
-        
-        
-    if !place_meeting(x,y+(lengthdir_y(jpower,aimdir)),osolid)
-        {
-        vsp += (lengthdir_y(jpower,aimdir))
-        }
+//first jump variables  
     if hasjumped = 0
     hasjumped = 1;
     aiming = 0;
     jumpcharge = 0;
     grounded = 0
-    }
 }
-
+    
 //caps jumpcharge
 if jumpcharge &gt; 110
 jumpcharge = 110;
@@ -472,10 +476,19 @@ if keyboard_check_pressed(vk_space)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///collision 2
+            <string>///collision 
 var fricmod = (1 * (abs(hsp)/4));
-var vfric = (2 / fricmod) + (abs(vsp)/10);
 
+if (!place_meeting(x+1,y,osolidm) &amp;&amp; !place_meeting(x-1,y,osolidm)) 
+{
+    {
+    if !place_meeting(x,y+1,osolidm)
+        {
+        vfric = (2 / fricmod) + (abs(vsp)/10);
+        }
+    }
+}
+    
 //falling code
 if (vsp &lt; 36)
  vsp += grav;
@@ -485,42 +498,32 @@ if vsp &gt; 36
 vsp = 36;
 
 //horizontal collision
-if (place_meeting(x+hsp,y,osolid))
+if (place_meeting(x+hsp,y,osolid)) &amp;&amp; !place_meeting(x,y+1,osolidm)
 {
-    while (!place_meeting(x+sign(hsp),y,osolid)) 
     {
-    x += sign(hsp);
-    }
-if abs(hsp) &gt; 10
-hsp *= ((0.5)*-1);
-
-}    
-
-var instnmh = (instance_nearest(x,y,osolidm).hsp)*sign(instance_nearest(x,y,osolidm).hsp);
-
-
-
-//horizontal collision moving
-if (place_meeting((x+hsp)+(instnmh),y,osolidm)) //&amp;&amp; !(place_meeting(x,y+1,osolid))
-{
-    while (!place_meeting(x+(sign(hsp)),y,osolidm)) 
-    {
-    x += sign(hsp);
-    }
-hsp *= ((0.5) * -1);
-}    
-
-var instmh = instance_nearest(x,y,osolidm)    
-    
-if place_meeting(x-7,y,osolidm) or place_meeting(x+7,y,osolidm)
-{
-if abs(hsp) &lt; abs(instmh.hsp)
-    {
+        while (!place_meeting(x+sign(hsp),y,osolid)) 
         {
-        hsp += instmh.hsp
+        x += sign(hsp);
+        }
+    if abs(hsp) &gt; 10
+        {
+        hsp *= ((0.5)*-1);
+        }
+    else
+        {
+        hsp *= -1
         }
     }
-}    
+}
+
+if (place_meeting(x+hsp,y,osolid)) &amp;&amp; place_meeting(x,y+1,osolidm)
+{
+    {
+    hsp = 0
+    }
+}
+
+
 //Vertical Collision
 if (place_meeting(x,y+vsp,osolid))
 {
@@ -533,36 +536,22 @@ if (place_meeting(x,y+vsp,osolid))
 vsp = 0;
 }
 
-//Vertical Collision moving
-if (place_meeting(x,y+vsp,osolidm)) &amp;&amp; !(place_meeting(x,y+1,osolid))
+if (position_meeting(x,y+(sprite_height/2)+vsp,opassthrough) &amp;&amp; vsp &gt; 0)
 {
-    {
-    while (!place_meeting(x,y+sign(vsp),osolidm))
+    while (!place_meeting(x,y+sign(vsp),opassthrough))
     {
     audio_play_sound(choose(slap1,slap2,slap3),1,0)
     y += sign(vsp);
     jumptimer = 30   
     }
-
-if vsp &gt;= 0
-{
-    grounded = 1
-    if hsp != instance_nearest(x,y,osolidm).hsp
-        {
-        hsp = instance_nearest(x,y,osolidm).hsp
-        }
-    }
-    vfric = 0
-    vsp = 0;
+vsp = 0;
 }
-}
-//very inelegant solution for block stuck bug. Get stuck inside a block end up here. No idea how to fix
-if grounded = 1 &amp;&amp; place_meeting(x,y,osolid)
-{ 
-    y-=6
-}
-
-
+    
+    
+    
+    
+    
+    
 //friction code
 if grounded = 1 
 {
@@ -586,13 +575,9 @@ if x &gt; room_width or x &lt; 0
     hsp *= -1
     }
     
-
-
-
 // calculation for hsp and vsp. Nice meme
 x += round(hsp);
 y += round(vsp);
-
 
 </string>
           </argument>

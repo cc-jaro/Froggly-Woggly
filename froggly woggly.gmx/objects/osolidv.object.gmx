@@ -37,7 +37,7 @@ above = 0
 
 alarm[0] = 1
 alarm[1] = 90
-hsp = 5
+vsp = 5
 </string>
           </argument>
         </arguments>
@@ -60,7 +60,7 @@ hsp = 5
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hsp *=-1
+            <string>vsp *=-1
 alarm[1] = 180
 </string>
           </argument>
@@ -112,29 +112,31 @@ above = 0
           <argument>
             <kind>1</kind>
             <string>
-//horizontal collision
-if (place_meeting(x+hsp,y,ofrog))
-{  
-    {
-    ofrog.hsp = (hsp);
-    ofrog.vfric = 0;
-    }
-}
-
 //eject frog if inside
 if (place_meeting(x,y,ofrog))
 {  
-    ofrog.x += hsp + sign(hsp)
+    ofrog.y += vsp + sign(vsp)
 }
 
-if (place_meeting(x,y-1,ofrog))
-{
-    ofrog.hsp = (hsp);
-    ofrog.vfric = 0;
+//vertical collision effect
+if (place_meeting(x,y+(vsp),ofrog)) or place_meeting(x,y-(vsp),ofrog)
+{ 
+    if vsp &lt; 0
+        {
+        ofrog.y += vsp;
+        y += vsp;
+        }
+
+    if  vsp &gt; 0 
+    {
+    y += vsp;
+    ofrog.y += vsp;
+    }
 }
 
+else
+y += vsp;
 
-x+=hsp
 </string>
           </argument>
         </arguments>

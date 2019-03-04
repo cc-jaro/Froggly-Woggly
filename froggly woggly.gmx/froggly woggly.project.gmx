@@ -79,6 +79,7 @@
     <script>scripts\calculate_y.gml</script>
     <script>scripts\scrdebug_text.gml</script>
     <script>scripts\scrfrog_movement.gml</script>
+    <script>scripts\scr_die.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fontmain</font>
@@ -118,6 +119,7 @@
       <object>objects\ospike</object>
       <object>objects\osolid</object>
       <object>objects\osolidm</object>
+      <object>objects\osolidv</object>
       <object>objects\ocheckpoint</object>
       <object>objects\levelflag</object>
       <object>objects\oflag</object>
