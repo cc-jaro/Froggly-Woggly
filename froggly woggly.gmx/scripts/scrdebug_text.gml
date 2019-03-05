@@ -16,7 +16,13 @@ avgfps = totalfps / steps;
 draw_set_font(fpsfont);
 draw_set_halign(fa_left);
 draw_text(30,120,"Fps:"+string(fps))
+
 draw_text(30,140,"Steps:"+string(avgfps))
+
+if instance_exists(control)
+{
+draw_text(30,160,"Android?:"+string(control.android))
+}
 
 if instance_exists(ofrog)
 {
