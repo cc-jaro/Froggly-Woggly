@@ -51,10 +51,12 @@ script_execute(display_init);
             <string>//debug code this must be first
 //if Debug = 1, Android = 1
 if os_type = os_android
-debug = 1;
+android = 1;
 else
-debug = 0;
+android = 0;
 
+
+zoom = 1;
 
 times = 0;
 
@@ -74,7 +76,7 @@ joystick = 0;
 
 vkesc = virtual_key_add(view_wview-(view_wview-2), view_hview-(view_hview-2), 54, 57, vk_escape)
 //Virtual keys init
-if debug = 1
+if android = 1
 {
 //vku = virtual_key_add(view_wview-180, view_hview-210, 175, 100, vk_up); 
 //vkd = virtual_key_add(view_wview-180, view_hview-105, 175, 100, vk_down); 
@@ -270,7 +272,28 @@ global.totalscore = (basescore - (time*10) - (attempts)*100 + (global.levelscore
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>ctrl = keyboard_check(vk_control);
+
+if mouse_wheel_up() &amp;&amp; ctrl = 1
+    {
+    zoom += 0.1;
+    }
+
+if mouse_wheel_down() &amp;&amp; ctrl = 1
+    {
+    zoom -= 0.1;
+    }
+    
+if mouse_check_button(mb_right) = ctrl
+    {
+    zoom = 1
+    }
+
+view_hview[0] = (global.screenh/(zoom));
+view_wview[0] = (global.screenw/(zoom));
+
+android = keyboard_check(vk_alt);
+</string>
           </argument>
         </arguments>
       </action>
@@ -322,12 +345,12 @@ draw_set_font(fontmain);
 draw_set_circle_precision(64); 
 
 //Draws Credits Text
-if debug = 1
+if android = 1
 {
 draw_text(150,99550,"Coding By Jaro #Music By Debussy");
 }
 
-if debug != 1
+if android != 1
 {
 draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
 }
@@ -357,9 +380,14 @@ draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
             <string>//Initialises Draw Settings for this step
 draw_set_alpha(1);
 
+admod = 1 + (android * 1)
+
+
+
+
 draw_set_font(fnt_blockfont);
 draw_set_colour(c_black);
-draw_rectangle(0,0,global.screenw,40,0)
+draw_rectangle(0,0,global.screenw,40*admod,0)
 draw_set_colour(c_white);
 
 //virtual_key_show(vkesc)
@@ -370,8 +398,8 @@ if ofrog.active = 1
 
 //charge bar top middle
 
-draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),1)
-draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
+draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32*admod),1)
+draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32)*admod,(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
 
 
 //text top right
@@ -390,10 +418,10 @@ if global.leveltype = 2
 {
     draw_set_halign(fa_left);
     
-    draw_text(global.screenw-600,20,"points: "+string(global.levelscore))
-    draw_text(global.screenw-340,20,"Time: "+string(ofrog.secs))
-    draw_text(global.screenw-180,20,"Deaths: "+string(global.attempts))
-    draw_text((global.screenw/2)-(410),20,"power:")
+    draw_text((global.screenw/10)*9,20*admod,"points: "+string(global.levelscore))
+    draw_text((global.screenw/10)*8,20*admod,"Time: "+string(ofrog.secs))
+    draw_text((global.screenw/10)*7,20*admod,"Deaths: "+string(global.attempts))
+    draw_text((global.screenw/10)*3,20*admod,"power:")
     }
 draw_set_colour(c_black);
 

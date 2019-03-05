@@ -50,7 +50,7 @@ message = "tap and drag to aim#release to jump"
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_alpha(alpha)
+            <string> draw_set_alpha(alpha)
 draw_set_font(fontmain)
 draw_set_halign(fa_middle)
 draw_set_valign(fa_center)

@@ -206,8 +206,8 @@ else
 grounded = 0
 }
 
-
-
+mouseguix = device_mouse_x_to_gui(0);
+mouseguiy = device_mouse_y_to_gui(0);
 
 //height
 if grounded = 1
@@ -238,8 +238,8 @@ if ctrls = 1
     {
     if mleftp = 1 &amp;&amp; grounded = 1
         {
-        savex = mouse_x;
-        savey = mouse_y;
+        savex = device_mouse_x_to_gui(0); //mouse_x
+        savey = device_mouse_y_to_gui(0); //mouse_y
         aiming = 1;
         }
     }
@@ -355,18 +355,18 @@ jumptimer --;
 if aiming = 1  &amp;&amp; active = 1
 {
 
-    if point_direction(mouse_x,mouse_y,savex,savey) &gt; 165 or point_direction(mouse_x,mouse_y,savex,savey) &lt; 270
+    if point_direction(mouseguix,mouseguiy,savex,savey) &gt; 165 or point_direction(mouseguix,mouseguiy,savex,savey) &lt; 270
     {
         aimdir = 165 // max aimdir
     }
-    if point_direction(mouse_x,mouse_y,savex,savey) &lt; 15 or point_direction(mouse_x,mouse_y,savex,savey) &gt; 270
+    if point_direction(mouseguix,mouseguiy,savex,savey) &lt; 15 or point_direction(mouseguix,mouseguiy,savex,savey) &gt; 270
     {
         aimdir = 15  // min aimdir
     }
   
-    if point_direction(mouse_x,mouse_y,savex,savey) &lt;= 165 &amp;&amp; point_direction(mouse_x,mouse_y,savex,savey) &gt;= 15
+    if point_direction(mouseguix,mouseguiy,savex,savey) &lt;= 165 &amp;&amp; point_direction(mouseguix,mouseguiy,savex,savey) &gt;= 15
     {
-        aimdir = point_direction(mouse_x,mouse_y,savex,savey)
+        aimdir = point_direction(mouseguix,mouseguiy,savex,savey)
     }  
 }    
 
@@ -374,7 +374,7 @@ if aiming = 1  &amp;&amp; active = 1
 //aiming with click and drag
 if aiming = 1 &amp;&amp; active = 1
     {
-    jumpcharge = point_distance(mouse_x,mouse_y,savex,savey)/5
+    jumpcharge = point_distance(mouseguix,mouseguiy,savex,savey)/5
     }
 
 //jumping code for click and drag
