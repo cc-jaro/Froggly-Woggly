@@ -27,7 +27,19 @@
             <kind>1</kind>
             <string>///display init
 instance_activate_object(self);
-script_execute(display_init);
+
+
+switch (os_type)
+    {
+    case os_windows: android = 1; break;
+    case os_android: android = 1; break;
+
+    }
+    
+android = 1;
+
+script_execute(display_init);    
+    
 </string>
           </argument>
         </arguments>
@@ -48,32 +60,14 @@ script_execute(display_init);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//debug code this must be first
-//if Debug = 1, Android = 1
-if os_type = os_android
-android = 1;
-else
-android = 0;
-
-
-zoom = 1 + (0.5 * android);
-
+            <string>zoom = 1;
 times = 0;
 
 //control scheme
 ctrls = 1
 
-//Middle of joystick init
-jsx = 0;
-jsy = 0;
-
 //Aiming init 
 aimdir = 0
-
-//Joystick use init
-joystick = 0;
-
-
 vkesc = virtual_key_add(view_wview-(view_wview-2), view_hview-(view_hview-2), 54, 57, vk_escape)
 //Virtual keys init
 if android = 1
@@ -290,12 +284,14 @@ if mouse_check_button(mb_right) = ctrl
     }
 
 zoom = 1 + (0.5 * android);
-    
-    
-view_hview[0] = (global.screenh/(zoom));
-view_wview[0] = (global.screenw/(zoom));
 
-android = keyboard_check(vk_alt);
+if android = 1
+{
+view_wview[0] = 1920;
+view_hview[0] = 1080;
+}
+
+//android = keyboard_check(vk_alt);
 </string>
           </argument>
         </arguments>
@@ -383,14 +379,11 @@ draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
             <string>//Initialises Draw Settings for this step
 draw_set_alpha(1);
 
-admod = 1 + (android * 1)
-
-
-
-
+if android = 0
+    {
 draw_set_font(fnt_blockfont);
 draw_set_colour(c_black);
-draw_rectangle(0,0,global.screenw,40*admod,0)
+draw_rectangle(0,0,global.screenw,40,0)
 draw_set_colour(c_white);
 
 //virtual_key_show(vkesc)
@@ -401,8 +394,8 @@ if ofrog.active = 1
 
 //charge bar top middle
 
-draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32*admod),1)
-draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32)*admod,(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
+draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),1)
+draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32),(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
 
 
 //text top right
@@ -421,20 +414,64 @@ if global.leveltype = 2
 {
     draw_set_halign(fa_left);
     
-    draw_text((global.screenw/10)*9,20*admod,"points: "+string(global.levelscore))
-    draw_text((global.screenw/10)*8,20*admod,"Time: "+string(ofrog.secs))
-    draw_text((global.screenw/10)*7,20*admod,"Deaths: "+string(global.attempts))
-    draw_text((global.screenw/10)*3,20*admod,"power:")
+    draw_text((global.screenw/10)*9,20,"points: "+string(global.levelscore))
+    draw_text((global.screenw/10)*8,20,"Time: "+string(ofrog.secs))
+    draw_text((global.screenw/10)*7,20,"Deaths: "+string(global.attempts))
+    draw_text((global.screenw/10)*3,20,"power:")
     }
 draw_set_colour(c_black);
+}}
+//android = 1
+//android
+//android
+if android = 1
+{
+draw_set_font(fnt_blockfont);
+draw_set_colour(c_black);
+draw_rectangle(0,0,global.screenw,40*2,0)
+draw_set_colour(c_white);
+
+//virtual_key_show(vkesc)
+draw_sprite_ext(sprite22,0,29,30,1.5,1.5,0,c_white,1);
+
+if ofrog.active = 1
+{
+
+//charge bar top middle
+
+draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32*2),1)
+draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32)*2,(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
 
 
+//text top right
+if global.leveltype = "mountain"
+
+    {
+    draw_set_halign(fa_left);
+    draw_text(global.screenw-600,0,"Height:"+string(ofrog.height)+"m")
+    draw_text(global.screenw-220,0,"Highest:"+string(ofrog.maxheight)+"m")
+    }
+    
 
 
-
-
-draw_set_alpha(1)
+//normal level text
+if global.leveltype = 2
+{
+    draw_set_halign(fa_left);
+    
+    draw_text((global.screenw/10)*9,20*2,"points: "+string(global.levelscore))
+    draw_text((global.screenw/10)*8,20*2,"Time: "+string(ofrog.secs))
+    draw_text((global.screenw/10)*7,20*2,"Deaths: "+string(global.attempts))
+    draw_text((global.screenw/10)*3,20*2,"power:")
+    }
+draw_set_colour(c_black);
 }
+
+
+
+}
+draw_set_alpha(1)
+
 script_execute(scrdebug_text);
 </string>
           </argument>
