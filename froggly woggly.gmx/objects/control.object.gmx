@@ -31,12 +31,12 @@ instance_activate_object(self);
 
 switch (os_type)
     {
-    case os_windows: android = 1; break;
+    case os_windows: android = 0; break;
     case os_android: android = 1; break;
 
     }
     
-android = 1;
+//android = 1;
 
 script_execute(display_init);    
     

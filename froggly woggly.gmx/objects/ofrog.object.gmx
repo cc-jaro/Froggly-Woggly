@@ -284,28 +284,12 @@ if place_meeting(x,y,oenemy)
   y = control.frogspawny;
     }
 
-  /*  
-//squishy death    
-if collision_line(x,y,x+19,y,osolid,1,1) &amp;&amp; collision_line(x,y,x-19,y,osolid,1,1)//(place_meeting(x+1,y,osolid) &amp;&amp; place_meeting(x-1,y,osolid)) 
-    {//reset code. This should work for any deaths
-    hsp = 0;
-    vsp = 0;
-    global.attempts ++;
-    x = control.frogspawnx;
-    y = control.frogspawny;
-    }
- */
- 
 if place_meeting(x+hsp,y,osolid) &amp;&amp; place_meeting(x-hsp,y,osolid)
     {
     scr_die();
     }  
     
 image_index = grounded
-
-//runs collision script (must be at end)
-//if grounded = 0  or vsp != 0 or hsp != 0
-//    {scrfrog_movement() };
 </string>
           </argument>
         </arguments>
@@ -503,6 +487,7 @@ if (place_meeting(x+hsp,y,osolid)) &amp;&amp; !place_meeting(x,y+1,osolidm)
         {
         x += sign(hsp);
         }
+        
     if abs(hsp) &gt; 10
         {
         hsp *= ((0.5)*-1);

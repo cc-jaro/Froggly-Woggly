@@ -122,14 +122,6 @@
     <instance objName="osolid" x="1608" y="2376" name="inst_91B777CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="control" x="72" y="144" name="inst_5C14D5C3" locked="0" code="basescore = 1000&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="tutorial" x="240" y="2016" name="inst_9792E53C" locked="0" code="message = &quot;Tap and drag to aim#Release to jump!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="744" y="2280" name="inst_AF068B0A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="744" y="2232" name="inst_B8EA7EA9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="792" y="2280" name="inst_B3A6BABE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="792" y="2232" name="inst_C889A1B8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="744" y="2184" name="inst_04676AAB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="792" y="2184" name="inst_0114C4A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="744" y="2136" name="inst_DAC05248" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="792" y="2136" name="inst_65A6CE2D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2328" name="inst_7388F953" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2376" name="inst_9E8895D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2280" name="inst_25896B16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -603,15 +595,7 @@
     <instance objName="oding" x="5424" y="2088" name="inst_8D6B66BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oding" x="5448" y="2088" name="inst_E481B10A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oding" x="5472" y="2088" name="inst_3644AEB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolidm" x="1248" y="2280" name="inst_F85B4C93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="264" y="2088" name="inst_7CB1AE75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="312" y="2088" name="inst_515101A8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="360" y="2088" name="inst_A9A7AD6C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="408" y="2088" name="inst_DB810A1F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="456" y="2088" name="inst_F1E7C2EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="504" y="2088" name="inst_6D01C627" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="552" y="2088" name="inst_2EE3F104" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="600" y="2088" name="inst_08D5A35F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolidm" x="984" y="2280" name="inst_F85B4C93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
