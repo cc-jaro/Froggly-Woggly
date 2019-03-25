@@ -114,17 +114,25 @@ above = 0
             <string>
 //horizontal collision
 if (place_meeting(x+hsp,y,ofrog))
-{   
+{
+
+
     if ofrog.grounded = 0
     {
   
-        ofrog.x += 2*sign(hsp);
+        ofrog.x = (ofrog.x + (1 * sign(ofrog.x - x)));
         ofrog.hsp *= -0.5;
         
     }
     
     if ofrog.grounded = 1
     {
+    if place_meeting(x+hsp,y,ofrog)
+        {
+            {
+            ofrog.x = (ofrog.x + (1 * sign(ofrog.x - x)));
+            }
+        }
     ofrog.hsp = hsp;
     ofrog.vfric = 0;
     }

@@ -71,7 +71,7 @@ aiming = 0;
 timer = 0;
 milisecs = 0;
 secs = 0;
-
+lifetime = 6;
 vfric = 0;
 
 //init basic aiming variables. ensure Charge is 0.75, and aimmod and chargemod is 1
@@ -205,6 +205,12 @@ else
 {
 grounded = 0
 }
+/*
+if (place_meeting(x,y+1,osolid)) &amp;&amp; !collision_line(x,y,x,y+22,osolid,1,1)
+{
+grounded = 0
+}
+*/
 
 mouseguix = device_mouse_x_to_gui(0);
 mouseguiy = device_mouse_y_to_gui(0);
@@ -284,10 +290,7 @@ if place_meeting(x,y,oenemy)
   y = control.frogspawny;
     }
 
-if place_meeting(x+hsp,y,osolid) &amp;&amp; place_meeting(x-hsp,y,osolid)
-    {
-    scr_die();
-    }  
+ 
     
 image_index = grounded
 </string>
@@ -470,7 +473,22 @@ if (!place_meeting(x+1,y,osolidm) &amp;&amp; !place_meeting(x-1,y,osolidm))
         }
     }
 }
-    
+
+//gives 6 steps to resolve collision issues
+if place_meeting(x,y,osolid)
+    {
+    lifetime --;
+    }
+  
+if !place_meeting(x,y,osolid)
+        {
+        lifetime = 6;
+        } 
+
+if lifetime = 0
+scr_die();
+
+   
 //falling code
 if (vsp &lt; 36)
  vsp += grav;
@@ -557,6 +575,8 @@ if x &gt; room_width or x &lt; 0
     {
     hsp *= -1
     }
+   
+    
     
 // calculation for hsp and vsp. Nice meme
 x += round(hsp);
