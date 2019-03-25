@@ -114,7 +114,7 @@
     <instance objName="osolid" x="1416" y="2376" name="inst_539841F0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1464" y="2376" name="inst_9CE75977" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1464" y="2328" name="inst_8145D194" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1512" y="2328" name="inst_BFBB8FA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1512" y="2280" name="inst_BFBB8FA2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1512" y="2376" name="inst_A42EDF0B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1560" y="2376" name="inst_72081A3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1560" y="2328" name="inst_11706981" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -597,6 +597,22 @@
     <instance objName="oding" x="5472" y="2088" name="inst_3644AEB5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolidm" x="984" y="2280" name="inst_F85B4C93" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolidm" x="1176" y="1992" name="inst_CD60272C" locked="0" code="hsp = -5&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="936" y="2088" name="inst_59858FA0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="984" y="2088" name="inst_F9B67098" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="1032" y="2088" name="inst_A7609AA6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="888" y="2088" name="inst_A31F3492" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="840" y="2088" name="inst_B5B3BE37" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="792" y="2088" name="inst_3EAC8728" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="744" y="2088" name="inst_5CFFFD75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="1080" y="2088" name="inst_03890243" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="1128" y="2088" name="inst_96340437" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opassthrough" x="1176" y="2088" name="inst_30EA28CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1560" y="2280" name="inst_DC7A619F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1512" y="2328" name="inst_C946BA13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1464" y="2280" name="inst_D8305A89" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1416" y="2280" name="inst_E4C20047" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1368" y="2280" name="inst_A898CF60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1656" y="2328" name="inst_FCE1DC6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
