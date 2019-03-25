@@ -18,10 +18,11 @@
     <TextureGroup1>0</TextureGroup1>
   </TextureGroups>
   <For3D>0</For3D>
-  <width>61</width>
-  <height>54</height>
+  <width>60</width>
+  <height>53</height>
   <frames>
     <frame index="0">images\sfrog2_0.png</frame>
     <frame index="1">images\sfrog2_1.png</frame>
+    <frame index="2">images\sfrog2_2.png</frame>
   </frames>
 </sprite>

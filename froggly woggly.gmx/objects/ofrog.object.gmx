@@ -467,7 +467,7 @@ var fricmod = (1 * (abs(hsp)/4));
 if (!place_meeting(x+1,y,osolidm) &amp;&amp; !place_meeting(x-1,y,osolidm)) 
 {
     {
-    if !place_meeting(x,y+1,osolidm)
+    if !place_meeting(x,y+1,osolidm) || (abs(hsp) &lt; 1 &amp;&amp; place_meeting(x,y+1,osolidm) )
         {
         vfric = (2 / fricmod) + (abs(vsp)/10);
         }
@@ -537,20 +537,6 @@ if (place_meeting(x,y+vsp,osolid))
 vsp = 0;
 }
 
-if (position_meeting(x,y+(sprite_height/2)+vsp,opassthrough) &amp;&amp; vsp &gt; 0)
-{
-    while (!place_meeting(x,y+sign(vsp),opassthrough))
-    {
-    audio_play_sound(choose(slap1,slap2,slap3),1,0)
-    y += sign(vsp);
-    jumptimer = 30   
-    }
-vsp = 0;
-}
-    
-    
-    
-    
     
     
 //friction code
