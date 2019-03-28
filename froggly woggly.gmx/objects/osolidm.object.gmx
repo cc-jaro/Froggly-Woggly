@@ -3,7 +3,7 @@
   <spriteName>sprite25</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-500</depth>
+  <depth>550</depth>
   <persistent>0</persistent>
   <parentName>osolid</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -94,7 +94,7 @@ above = 0
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -120,7 +120,7 @@ if (place_meeting(x+hsp,y,ofrog))
     if ofrog.grounded = 0
     {
   
-        ofrog.x = (ofrog.x + (1 * sign(ofrog.x - x)));
+        ofrog.x = (ofrog.x + (sign(ofrog.x - x)));
         ofrog.hsp *= -0.5;
         
     }
@@ -130,7 +130,8 @@ if (place_meeting(x+hsp,y,ofrog))
     if place_meeting(x+hsp,y,ofrog)
         {
             {
-            ofrog.x = (ofrog.x + (1 * sign(ofrog.x - x)));
+            ofrog.x = (ofrog.x + (sign(ofrog.x - x)));
+            
             }
         }
     ofrog.hsp = hsp;
@@ -143,20 +144,23 @@ if (place_meeting(x+hsp,y,ofrog))
     
 }
 
+
 //eject frog if inside
 if (place_meeting(x,y,ofrog))
 {  
     ofrog.x += hsp + sign(hsp)
 }
 
+//make sure frog sticks to block above and follows it
+
 if (place_meeting(x,y-1,ofrog))
 {
-    ofrog.hsp = (hsp);
+    ofrog.hsp = hsp;
     ofrog.vfric = 0;
 }
 
 
-x+=hsp
+x += hsp
 </string>
           </argument>
         </arguments>
