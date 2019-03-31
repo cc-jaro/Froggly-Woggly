@@ -27,9 +27,20 @@
             <kind>1</kind>
             <string>canjump = 1;
 vsp = 0;
+hsp = 0;
 strength = 15;
 alarm0 = 0;
 canthrow = 1;
+
+jumps = 3;
+jumpcharge = 0;
+
+grav = 0.75
+
+anchorx = x;
+anchory = y;
+
+chance = 0;
 </string>
           </argument>
         </arguments>
@@ -106,22 +117,101 @@ ofrog.image_yscale = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if place_meeting(x,y,ofrog) &amp;&amp; canthrow = 1
+            <string>if !place_meeting(x,y,ofrog)
+image_xscale = sign(ofrog.x - x);
+
+
+
+    
+if hsp = 0
+    {
+    hsp = 2 * (choose(1,-1));
+    }
+    
+if hsp != 0
+    {
+    if point_distance(x,y,anchorx,anchory) &lt;= 400
+        {
+        if random(360) &lt;= chance
+            {
+            hsp *= -1;
+            chance = -20;
+            }
+    if point_distance(x,y,anchorx,anchory) &gt; 400
+        {
+        if random(360) &lt;= chance
+            {
+            hsp = 2 * sign(x-anchorx);
+            chance = -20;
+            }
+        
+        }}
+    chance ++;    
+    }
+
+if (place_meeting(x+hsp,y,osolid)) &amp;&amp; !place_meeting(x,y+1,osolidm)
+{
+    {
+        while (!place_meeting(x+sign(hsp),y,osolid)) 
+        {
+        x += sign(hsp);
+        hsp *= -1;
+        chance = -30;
+        }
+    }
+    
+}
+    
+x += hsp;     
+    
+if place_meeting(x,y,ofrog) &amp;&amp; canthrow = 1
     {
     strength *= sign(ofrog.hsp);
+    image_xscale = (sign(strength)*-1);
     canthrow = 0;
-    alarm[0] = 60;
-    alarm[1] = 180;
+    alarm[0] = 30+irandom(20);
+    alarm[1] = 90;
     }
     
 if alarm[0] &gt;=1
     {
-    ofrog.x = x;
-    ofrog.y = y;
+    ofrog.x = x;     
+    ofrog.y = y-4;
     ofrog.grav = 0;
     ofrog.image_yscale = -1;
     
 }
+
+if canthrow = 1 &amp;&amp; alarm[0] &gt;=1
+    {
+    if place_meeting(x,y+1,osolid)
+        {
+        if jumps &gt;= 1
+            {
+            y -= 4;
+            vsp -= 14;
+            jumps --;
+            }
+        }
+    }
+
+if vsp &lt;= 36
+vsp += grav;   
+    
+    
+    
+    
+if (place_meeting(x,y+vsp,osolid))
+{
+    while (!place_meeting(x,y+sign(vsp),osolid))
+    {
+    y += sign(vsp);
+    }
+vsp = 0;
+}
+
+
+y += vsp; 
 </string>
           </argument>
         </arguments>
@@ -145,7 +235,11 @@ if alarm[0] &gt;=1
           <argument>
             <kind>1</kind>
             <string>draw_self();
-draw_text(x,y,alarm[0])
+draw_set_font(fpsfont)
+draw_text(x,y-70,'dice'+string(chance))
+
+draw_line(x,y,anchorx,anchory);
+draw_text(anchorx,y-20,point_distance(x,y,anchorx,anchory));
 </string>
           </argument>
         </arguments>

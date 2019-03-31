@@ -647,7 +647,7 @@
     <instance objName="opassthrough" x="168" y="1848" name="inst_2840159A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="opassthrough" x="192" y="1848" name="inst_4CF4E1BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="opassthrough" x="216" y="1848" name="inst_E9C6B146" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opitcher" x="888" y="2256" name="inst_A327715D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="opitcher" x="1200" y="2256" name="inst_A327715D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="9624" y="2328" name="inst_CDA5ADB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="9624" y="2280" name="inst_194491CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
