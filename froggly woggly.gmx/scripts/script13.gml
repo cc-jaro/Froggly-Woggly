@@ -88,11 +88,19 @@ if (place_meeting(x,y+vsp,osolid))
     while (!place_meeting(x,y+sign(vsp),osolid))
     {
     y += sign(vsp);
-    canjump = 1;
     }
-    
+vsp = 0;
+}
+
+//y movement
+y += vsp;     
+
+//jumping random
+
+
+if (place_meeting(x,y+2,osolid)) && distp <= 300
     {
-    if canjump = 1 && distp <= 300
+    if canjump = 1
         {
         if jcharges > 0
             {
@@ -112,11 +120,13 @@ if (place_meeting(x,y+vsp,osolid))
             }
         }
     }
-vsp = 0;
-}
 
-//y movement
-y += vsp;     
+if (place_meeting(x,y+2,osolid))
+    {
+    canjump = 1;
+    }
+
+
 
 
 

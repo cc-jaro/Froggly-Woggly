@@ -596,63 +596,27 @@
     <instance objName="osolid" x="1416" y="2280" name="inst_E4C20047" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1368" y="2280" name="inst_A898CF60" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2328" name="inst_FCE1DC6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="2088" name="inst_FFD8CAC4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="2088" name="inst_3A1CDA81" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="2088" name="inst_F8D7B221" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="2088" name="inst_12F8060C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="2016" name="inst_299CC312" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="2016" name="inst_465B81C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="2016" name="inst_3A09AC32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="2016" name="inst_29CBD838" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="2016" name="inst_8AB19BD5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="96" y="2016" name="inst_59D76726" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="2016" name="inst_13F06CE9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="144" y="2016" name="inst_CD329D9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="2016" name="inst_B2805A51" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="0" y="1920" name="inst_3F89C949" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="1920" name="inst_6503D936" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="1920" name="inst_DC2976BB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="1920" name="inst_1C9350A4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="96" y="1920" name="inst_30C8CAE0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="1920" name="inst_6E8A4E01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="144" y="1920" name="inst_18407826" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="1920" name="inst_176CBC27" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="0" y="1800" name="inst_55B2D347" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="1800" name="inst_D31E7F76" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="1800" name="inst_A975ED28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="1800" name="inst_19574F9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="96" y="1800" name="inst_DC7BC147" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="1800" name="inst_401B9956" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="144" y="1800" name="inst_AA56F515" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="1800" name="inst_C5452762" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="192" y="1800" name="inst_94D31DC0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="0" y="1728" name="inst_9372DC13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="1728" name="inst_82575E23" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="1728" name="inst_B6CD1A5D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="1728" name="inst_94D88CB6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="96" y="1728" name="inst_7D2C4FFD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="1728" name="inst_C2825CFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="144" y="1728" name="inst_7E2AE6DC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="1728" name="inst_5043C2F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="192" y="1728" name="inst_3AF37855" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="216" y="1728" name="inst_56114B3B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="240" y="1728" name="inst_17230DEB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="0" y="1848" name="inst_4D49E9E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="24" y="1848" name="inst_76619294" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="48" y="1848" name="inst_00A33B29" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="72" y="1848" name="inst_B660D341" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="96" y="1848" name="inst_60BEF951" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="120" y="1848" name="inst_297C143E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="144" y="1848" name="inst_F519EC33" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="168" y="1848" name="inst_2840159A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="192" y="1848" name="inst_4CF4E1BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opassthrough" x="216" y="1848" name="inst_E9C6B146" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opitcher" x="1200" y="2256" name="inst_A327715D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="9624" y="2328" name="inst_CDA5ADB7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="9624" y="2280" name="inst_194491CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1176" y="1968" name="inst_A71ACD6A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1224" y="1968" name="inst_62516CA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opitcher" x="1200" y="1896" name="inst_39C27A6F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2280" name="inst_6BC56872" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2232" name="inst_975EFAE8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2184" name="inst_CBBCC005" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2136" name="inst_C58DF0E1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2088" name="inst_330A473F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="2040" name="inst_0B25EC59" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1992" name="inst_F3710B7C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1944" name="inst_F8AA8D39" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1896" name="inst_23AD9F61" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1848" name="inst_4415D031" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1800" name="inst_A1C6C822" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1752" name="inst_D8499EB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1704" name="inst_28460B57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="-24" y="1656" name="inst_CB792894" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1008" y="2040" name="inst_917B7425" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1056" y="2040" name="inst_C5DE9C95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="1104" y="2040" name="inst_ECEA0807" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obatter" x="1032" y="1968" name="inst_17A8F911" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospinner" x="1464" y="2208" name="inst_2C9E50AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
