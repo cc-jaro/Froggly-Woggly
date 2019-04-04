@@ -39,8 +39,14 @@ grav = 0.75
 
 anchorx = x;
 anchory = y;
+face = 1;
 
 chance = 0;
+grabbed = 0;
+image_index = irandom(image_number-1)
+
+timer = -1;
+valid = 0;
 </string>
           </argument>
         </arguments>
@@ -117,101 +123,47 @@ ofrog.image_yscale = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if !place_meeting(x,y,ofrog)
-image_xscale = sign(ofrog.x - x);
+            <string>//corrects orientation
 
-
-
-    
-if hsp = 0
+if instance_exists(ofrog) &amp;&amp; !grabbed &gt; 0
     {
-    hsp = 2 * (choose(1,-1));
-    }
-    
-if hsp != 0
-    {
-    if point_distance(x,y,anchorx,anchory) &lt;= 400
+    if ofrog.x &gt; x
         {
-        if random(360) &lt;= chance
-            {
-            hsp *= -1;
-            chance = -20;
-            }
-    if point_distance(x,y,anchorx,anchory) &gt; 400
+        //face = -1;
+        }
+    if ofrog.x &lt; x
         {
-        if random(360) &lt;= chance
-            {
-            hsp = 2 * sign(x-anchorx);
-            chance = -20;
-            }
-        
-        }}
-    chance ++;    
-    }
-
-if (place_meeting(x+hsp,y,osolid)) &amp;&amp; !place_meeting(x,y+1,osolidm)
-{
-    {
-        while (!place_meeting(x+sign(hsp),y,osolid)) 
-        {
-        x += sign(hsp);
-        hsp *= -1;
-        chance = -30;
+        //face = 1;
         }
     }
-    
-}
-    
-x += hsp;     
-    
+
+enemy_ai();    
+
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//this is enemy specific code beyond this point
+
+//checks to see if the frog is on it and it can grab   
 if place_meeting(x,y,ofrog) &amp;&amp; canthrow = 1
     {
-    strength *= sign(ofrog.hsp);
+    strength *= face;
     image_xscale = (sign(strength)*-1);
     canthrow = 0;
     alarm[0] = 30+irandom(20);
     alarm[1] = 90;
     }
-    
+//holds onto the frog whilst the alarm ticks down 
 if alarm[0] &gt;=1
     {
-    ofrog.x = x;     
+    ofrog.x = x + (10 * image_xscale);     
     ofrog.y = y-4;
     ofrog.grav = 0;
-    ofrog.image_yscale = -1;
-    
+    ofrog.image_yscale = -1;   
 }
 
-if canthrow = 1 &amp;&amp; alarm[0] &gt;=1
-    {
-    if place_meeting(x,y+1,osolid)
-        {
-        if jumps &gt;= 1
-            {
-            y -= 4;
-            vsp -= 14;
-            jumps --;
-            }
-        }
-    }
+grabbed = sign(alarm[0])
 
-if vsp &lt;= 36
-vsp += grav;   
-    
-    
-    
-    
-if (place_meeting(x,y+vsp,osolid))
-{
-    while (!place_meeting(x,y+sign(vsp),osolid))
-    {
-    y += sign(vsp);
-    }
-vsp = 0;
-}
-
-
-y += vsp; 
 </string>
           </argument>
         </arguments>
@@ -235,11 +187,22 @@ y += vsp;
           <argument>
             <kind>1</kind>
             <string>draw_self();
+image_speed = 0.75;
 draw_set_font(fpsfont)
-draw_text(x,y-70,'dice'+string(chance))
 
 draw_line(x,y,anchorx,anchory);
-draw_text(anchorx,y-20,point_distance(x,y,anchorx,anchory));
+draw_text(anchorx,anchory,point_distance(x,y,anchorx,anchory));
+
+draw_text(x,y-40,'valid'+string(valid));
+draw_text(x,y-55,'locked'+string(locked));
+draw_text(x,y-70,'hsp'+string(hsp));
+draw_circle(check,y+(sprite_height*0.66),3,0)
+
+if locked = 0
+image_xscale = sign(hsp);
+
+if locked = 1
+image_xscale = sign(ofrog.x-x);
 </string>
           </argument>
         </arguments>
