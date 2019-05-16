@@ -57,6 +57,8 @@
     <sprite>sprites\sprite30</sprite>
     <sprite>sprites\sspinner1</sprite>
     <sprite>sprites\sspinner2</sprite>
+    <sprite>sprites\sprite33</sprite>
+    <sprite>sprites\sprite34</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -119,6 +121,7 @@
       <object>objects\obat</object>
       <object>objects\ojumper</object>
       <object>objects\ospinner</object>
+      <object>objects\oshroom</object>
       <object>objects\opitcher</object>
       <object>objects\obatter</object>
     </objects>
