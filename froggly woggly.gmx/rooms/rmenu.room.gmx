@@ -53,6 +53,7 @@
   <instances>
     <instance objName="omenu" x="0" y="0" name="inst_07C6EF69" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obmenu" x="96" y="64" name="inst_231893EF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="menuclicker_" x="160" y="320" name="inst_0F8201D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

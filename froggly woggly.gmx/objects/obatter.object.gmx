@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obadguyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -40,6 +40,8 @@ grav = 0.75
 anchorx = x;
 anchory = y;
 face = 1;
+
+event_inherited();
 
 chance = 0;
 grabbed = 0;
@@ -180,7 +182,7 @@ draw_text(anchorx,anchory,point_distance(x,y,anchorx,anchory));
 
 draw_text(x,y-40,'valid'+string(valid));
 draw_text(x,y-55,'locked'+string(locked));
-draw_text(x,y-70,'hsp'+string(hsp));
+draw_text(x,y-70,'hp'+string(hp));
 draw_circle(check,y+(sprite_height*0.66),3,0)
 
 if locked = 0

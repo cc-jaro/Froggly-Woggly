@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>obadguyparent</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -31,6 +31,8 @@ hsp = 0;
 strength = 15;
 alarm0 = 0;
 canthrow = 1;
+
+event_inherited();
 
 jumps = 3;
 jumpcharge = 0;
@@ -125,21 +127,10 @@ ofrog.image_yscale = 1;
             <kind>1</kind>
             <string>//corrects orientation
 
-if instance_exists(ofrog) &amp;&amp; !grabbed &gt; 0
-    {
-    if ofrog.x &gt; x
-        {
-        //face = -1;
-        }
-    if ofrog.x &lt; x
-        {
-        //face = 1;
-        }
-    }
 
 enemy_ai();    
 
-
+face = sign(x - control.frogspawnx)
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////
 //this is enemy specific code beyond this point
@@ -163,6 +154,9 @@ if alarm[0] &gt;=1
 }
 
 grabbed = sign(alarm[0])
+
+
+
 
 </string>
           </argument>
@@ -195,7 +189,7 @@ draw_text(anchorx,anchory,point_distance(x,y,anchorx,anchory));
 
 draw_text(x,y-40,'valid'+string(valid));
 draw_text(x,y-55,'locked'+string(locked));
-draw_text(x,y-70,'hsp'+string(hsp));
+draw_text(x,y-70,'hp'+string(hp));
 draw_circle(check,y+(sprite_height*0.66),3,0)
 
 if locked = 0

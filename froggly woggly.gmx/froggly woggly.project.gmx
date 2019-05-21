@@ -59,6 +59,7 @@
     <sprite>sprites\sspinner2</sprite>
     <sprite>sprites\sprite33</sprite>
     <sprite>sprites\sprite34</sprite>
+    <sprite>sprites\sprite35</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -116,6 +117,7 @@
       <object>objects\tutorial</object>
     </objects>
     <objects name="enemie">
+      <object>objects\obadguyparent</object>
       <object>objects\oenemy</object>
       <object>objects\owalker</object>
       <object>objects\obat</object>
@@ -142,6 +144,8 @@
     </objects>
     <object>objects\ofrog</object>
     <object>objects\control</object>
+    <object>objects\ospit</object>
+    <object>objects\menuclicker_</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>

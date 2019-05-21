@@ -121,7 +121,7 @@
     <instance objName="osolid" x="1608" y="2328" name="inst_D41711C3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1608" y="2376" name="inst_91B777CC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="control" x="72" y="144" name="inst_5C14D5C3" locked="0" code="basescore = 1000&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="tutorial" x="240" y="2016" name="inst_9792E53C" locked="0" code="message = &quot;Tap and drag to aim#Release to jump!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="tutorial" x="336" y="1944" name="inst_9792E53C" locked="0" code="message = &quot;Tap and drag to aim#Release to jump#Right click cancels Jump#use ctrl to spit#hold to charge and release to shoot&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2328" name="inst_7388F953" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2376" name="inst_9E8895D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="1656" y="2280" name="inst_25896B16" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -619,7 +619,6 @@
     <instance objName="ospinner" x="1464" y="2208" name="inst_2C9E50AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="1632" y="2112" name="inst_83C947CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="2088" y="2160" name="inst_32F282CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="opitcher" x="1176" y="2256" name="inst_9884C53A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

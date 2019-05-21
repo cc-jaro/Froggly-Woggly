@@ -104,6 +104,9 @@ ini_close();
 global.attempts = 0;
 active = 1;
 
+canshoot = 1;
+shootcharge = 0;
+
 drawcirc = 0;
 circalpha = 0;
 
@@ -131,6 +134,29 @@ hhsp = 0
           <argument>
             <kind>1</kind>
             <string></string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>canshoot = 1;
+</string>
           </argument>
         </arguments>
       </action>
@@ -191,6 +217,8 @@ key_turn = keyboard_check_pressed(vk_control);
 mleft = mouse_check_button(mb_left);
 mleftp = mouse_check_button_pressed(mb_left);
 mleftr = mouse_check_button_released(mb_left);
+
+mright = mouse_check_button(mb_right);
 
 keyturn = key_turn;
 keyaim = key_up + key_down ;
@@ -256,6 +284,15 @@ if aiming = 1
     savey += vsp
     }
 
+    //cancelling jump
+if aiming = 1
+    {
+    if mright = 1
+        {
+        aiming = 0;
+        jumpcharge = 0;
+        }
+    }
 //timing code
 if hasjumped = 1 &amp;&amp; active = 1
 timer ++;
@@ -418,7 +455,87 @@ jumpcharge = 110;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///secondary memes
+            <string>///shooting
+
+//shooting
+keyshoot = keyboard_check(vk_control);
+keyshooth = keyboard_check(vk_control);
+keyshootr = keyboard_check_released(vk_control);
+
+if keyshoot = 1 &amp;&amp; shootcharge &lt; 60
+    {
+    shootcharge ++
+    }
+
+
+
+
+    if canshoot = 1 &amp;&amp; keyshoot = 0 &amp;&amp; shootcharge &gt; 5
+        {
+        canshoot = 0;
+        alarm[10] = 30;
+        var projectile = instance_create(x,y-10,ospit)
+        with (projectile)
+            {
+            hsp = lengthdir_x((18*ofrog.image_xscale)+(ofrog.hsp),45);
+            vsp = lengthdir_y(ofrog.shootcharge/2,45);
+            }
+        shootcharge = 0;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//activation
 instance_activate_region(x-(global.screenw/1.5),y-(global.screenh/1.5),global.screenw*1.5,global.screenh*1.5,true);
 nearestmove = instance_nearest(x,y,osolidm)
 

@@ -33,7 +33,7 @@ grav = 0.5;
 hsp = 0;
 vsp = 0;
 vertigo = 1;
-
+event_inherited();
 run = 0;
 
 distp = point_distance(x,y,ofrog.x,ofrog.y);
@@ -110,6 +110,32 @@ if place_meeting(x,y+vsp,osolid)
 }
 
 y += vsp
+
+if distp &lt; 450
+{
+if collision_circle(x,y,35,ospit,0,1)
+    {
+    with (instance_nearest(x,y,ospit))
+        {
+        hsp *= -1
+        vsp = -5
+        }
+    
+    }
+    }
+
+if distp &gt;= 450
+{
+if collision_circle(x,y+25,35,ospit,0,1)
+    {
+    with (instance_nearest(x,y,ospit))
+        {
+        hsp *= -1
+        vsp = -5
+        }
+    
+    }
+    }
 </string>
           </argument>
         </arguments>
