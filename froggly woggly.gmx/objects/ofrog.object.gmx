@@ -104,8 +104,12 @@ ini_close();
 global.attempts = 0;
 active = 1;
 
+//shooting variables
 canshoot = 1;
 shootcharge = 0;
+ammo = 2;
+ammocharge = 0;
+
 
 drawcirc = 0;
 circalpha = 0;
@@ -462,18 +466,22 @@ keyshoot = keyboard_check(vk_control);
 keyshooth = keyboard_check(vk_control);
 keyshootr = keyboard_check_released(vk_control);
 
-if keyshoot = 1 &amp;&amp; shootcharge &lt; 60
+if keyshoot = 1 &amp;&amp; shootcharge &lt; 60 
     {
     shootcharge ++
     }
 
+if keyshoot = 0 &amp;&amp; shootcharge &gt; 0 &amp;&amp; ammo = 0
+    {
+    shootcharge = 0
+    }
 
 
-
-    if canshoot = 1 &amp;&amp; keyshoot = 0 &amp;&amp; shootcharge &gt; 5
+    if canshoot = 1 &amp;&amp; keyshoot = 0 &amp;&amp; shootcharge &gt; 5 &amp;&amp; ammo &gt; 0
         {
         canshoot = 0;
-        alarm[10] = 30;
+        ammo --;
+        alarm[10] = 15;
         var projectile = instance_create(x,y-10,ospit)
         with (projectile)
             {
@@ -485,11 +493,44 @@ if keyshoot = 1 &amp;&amp; shootcharge &lt; 60
 
 
 
+if ammo &lt; 3
+    {
+    ammocharge ++;
+    }
+    
+if ammo = 3
+    {
+    ammocharge = 0;
+    }
 
+    
+    
+if ammocharge = 180
+    {
+    if ammo &lt; 3
+        {
+        ammo ++;
+        //ammocharge = 0;
+        }
+    }
 
+if ammocharge = 240
+    {
+    if ammo &lt; 3
+        {
+        ammo ++;
+        //ammocharge = 0;
+        }
+    }
 
-
-
+if ammocharge = 300
+    {
+    if ammo &lt; 3
+        {
+        ammo ++;
+        ammocharge = 0;
+        }
+    }
 
 
 

@@ -36,9 +36,11 @@ draw_text(30,posy+offset,"aiming:"+string(ofrog.aiming))
 offset += 20;
 draw_text(30,posy+offset,"lifetime:"+string(ofrog.lifetime))
 offset += 20;
-draw_text(30,posy+offset,"canshoot:"+string(ofrog.canshoot))
+draw_text(30,posy+offset,"ammo:"+string(ofrog.ammo))
 offset += 20;
 draw_text(30,posy+offset,"shootcharge:"+string(ofrog.shootcharge))
+offset += 20;
+draw_text(30,posy+offset,"ammo cd:"+string(ofrog.ammocharge))
 offset += 20;
 }
 
