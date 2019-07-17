@@ -619,6 +619,24 @@
     <instance objName="ospinner" x="1464" y="2208" name="inst_2C9E50AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="1632" y="2112" name="inst_83C947CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="2088" y="2160" name="inst_32F282CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="528" y="2280" name="inst_56DFDBC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="6912" y="2328" name="inst_A5A2327E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="6984" y="2328" name="inst_DC3E14A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7056" y="2328" name="inst_F77AFE01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7128" y="2328" name="inst_7DBF2EEA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7200" y="2328" name="inst_2AD58E75" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7272" y="2328" name="inst_E70CD7B9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7344" y="2328" name="inst_EBBF18F8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7416" y="2328" name="inst_4204C1DF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7488" y="2328" name="inst_CF108668" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7560" y="2328" name="inst_5D28368D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7632" y="2328" name="inst_57B31934" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7704" y="2328" name="inst_09BED8ED" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7776" y="2328" name="inst_21A97AD4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7848" y="2328" name="inst_2AB17B8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7920" y="2328" name="inst_0EC1DA13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="7992" y="2328" name="inst_FFCF562B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="8064" y="2328" name="inst_5AF75D9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

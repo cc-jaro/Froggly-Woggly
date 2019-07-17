@@ -512,6 +512,7 @@ if ammocharge = 180
         ammo ++;
         //ammocharge = 0;
         }
+    
     }
 
 if ammocharge = 240
@@ -689,7 +690,18 @@ if (place_meeting(x,y+vsp,osolid))
     }
 vsp = 0;
 }
-
+/*
+//Vertical Collision with spring
+if (place_meeting(x,y+1,ospring))
+{
+    //while (!place_meeting(x,y+sign(vsp),ospring))
+   // {
+    //y += sign(vsp);
+    //jumptimer = 30   
+    //}
+vsp *= -2;
+}
+*/
 //move to resolve vertical
 y += round(vsp);   
 
@@ -713,6 +725,8 @@ if x &gt; room_width or x &lt; 0
     {
     hsp *= -1
     }
+    
+
 </string>
           </argument>
         </arguments>
