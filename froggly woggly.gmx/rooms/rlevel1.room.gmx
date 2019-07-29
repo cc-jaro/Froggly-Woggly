@@ -612,14 +612,7 @@
     <instance objName="osolid" x="-24" y="1752" name="inst_D8499EB4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="-24" y="1704" name="inst_28460B57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="-24" y="1656" name="inst_CB792894" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1008" y="2040" name="inst_917B7425" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1056" y="2040" name="inst_C5DE9C95" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="osolid" x="1104" y="2040" name="inst_ECEA0807" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obatter" x="1032" y="1968" name="inst_17A8F911" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ospinner" x="1464" y="2208" name="inst_2C9E50AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oshroom" x="1632" y="2112" name="inst_83C947CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="2088" y="2160" name="inst_32F282CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ospringv" x="528" y="2280" name="inst_56DFDBC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="6912" y="2328" name="inst_A5A2327E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="6984" y="2328" name="inst_DC3E14A1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="7056" y="2328" name="inst_F77AFE01" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -637,6 +630,11 @@
     <instance objName="ospringv" x="7920" y="2328" name="inst_0EC1DA13" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="7992" y="2328" name="inst_FFCF562B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="8064" y="2328" name="inst_5AF75D9D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospinner" x="2280" y="2328" name="inst_BE0C81AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="24" y="1848" name="inst_C4C8ACC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospringv" x="24" y="1896" name="inst_AA870C32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="osolid" x="648" y="2280" name="inst_FECB11BD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="otank" x="768" y="2280" name="inst_3837D139" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

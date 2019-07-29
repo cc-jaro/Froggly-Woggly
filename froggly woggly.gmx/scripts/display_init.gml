@@ -6,9 +6,13 @@ global.screenw = display_get_width();
 
 //Sets size of the window to be the same dimensions as the screen
 
+
+
+
+
 //sets view height and width to screen height and width
-view_hview[0] = global.screenh;
-view_wview[0] = global.screenw;
+view_hview[0] = 1080//global.screenh;
+view_wview[0] = 1920//global.screenw;
 
 //Sets the drawing surface to the new size. Shouldn't be needed but its a failsafe
 surface_resize(application_surface, global.screenw, global.screenh); 

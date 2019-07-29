@@ -148,8 +148,21 @@ enemy_ai();
 
 if place_meeting(x,y,ofrog)
     {
-    ofrog.vsp = -4
-    ofrog.hsp *= -2.5
+    
+    
+    
+        {
+        if abs(ofrog.hsp) &gt; 5
+            {
+            ofrog.hsp *= -2.5
+            ofrog.vsp = -4
+            }
+        else
+            {
+            ofrog.hsp = 12 * face
+            ofrog.vsp = -6
+            }
+        }
     }
 </string>
           </argument>
