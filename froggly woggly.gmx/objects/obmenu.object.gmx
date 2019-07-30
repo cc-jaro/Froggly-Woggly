@@ -108,8 +108,10 @@ script_execute(display_init)
 
 //opens ini to read values
 ini_open("config.ini");
-global.music = ini_read_real("configs", "music", 1);
-global.fullscreen = ini_read_real("configs", "fullscreen", 1);
+global.music = ini_read_real("configs", "music", 0);
+
+global.fullscreen = ini_read_real("configs", "fullscreen", 0);
+global.fullscreen = ini_write_real("configs", "fullscreen", 1);
 ini_close(); 
 
 if global.fullscreen = 1

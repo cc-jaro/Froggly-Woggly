@@ -39,7 +39,7 @@ instance_create(x,y,but_screen)
 ini_open("config.ini");
 maxheight = ini_read_real("scores", "maxheight", 0);
 victory = ini_read_real("scores", "victory", 0);
-global.fullscreen = ini_read_real("configs", "fullscreen", 1);
+global.fullscreen = ini_read_real("configs", "fullscreen", 0);
 ini_close(); 
 
 bumder = 1

@@ -76,6 +76,8 @@
     <sprite>sprites\sprite39</sprite>
     <sprite>sprites\sprite40</sprite>
     <sprite>sprites\sprite41</sprite>
+    <sprite>sprites\sprite42</sprite>
+    <sprite>sprites\sprite43</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -169,16 +171,16 @@
     <object>objects\control</object>
     <object>objects\ospit</object>
     <object>objects\menuclicker_</object>
+    <object>objects\oturret</object>
+    <object>objects\oturretbullet</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
+    <room>rooms\rlevel1</room>
     <room>rooms\rmenu2</room>
     <room>rooms\room1</room>
     <room>rooms\test_room</room>
     <room>rooms\room2</room>
-    <rooms name="levels">
-      <room>rooms\rlevel1</room>
-    </rooms>
     <room>rooms\roverworld</room>
   </rooms>
   <help>
