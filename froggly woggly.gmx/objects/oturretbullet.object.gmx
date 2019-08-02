@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x+= hsp;
+            <string>x += hsp;
+y += vsp;
 </string>
           </argument>
         </arguments>

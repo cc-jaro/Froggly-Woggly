@@ -417,7 +417,7 @@ if global.leveltype = 2
     draw_text((global.screenw/10)*9,20,"points: "+string(global.levelscore))
     draw_text((global.screenw/10)*8,20,"Time: "+string(ofrog.secs))
     draw_text((global.screenw/10)*7,20,"Deaths: "+string(global.attempts))
-    draw_text((global.screenw/10)*3,20,"power:")
+    draw_text((global.screenw/2)-(420),20,"power:")
     }
 draw_set_colour(c_black);
 }}

@@ -613,10 +613,9 @@
     <instance objName="osolid" x="-24" y="1704" name="inst_28460B57" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="-24" y="1656" name="inst_CB792894" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oshroom" x="2088" y="2160" name="inst_32F282CB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="ospinner" x="2280" y="2328" name="inst_BE0C81AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="ospinner" x="2300" y="2318" name="inst_BE0C81AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="osolid" x="24" y="1848" name="inst_C4C8ACC1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="24" y="1896" name="inst_AA870C32" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="oturret" x="1368" y="2232" name="inst_5C80A410" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringv" x="1008" y="2280" name="inst_8535A08E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringh" x="1320" y="2280" name="inst_9D669AF9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="ospringh" x="24" y="2280" name="inst_231F40D4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

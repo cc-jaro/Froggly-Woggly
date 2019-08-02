@@ -26,6 +26,8 @@
           <argument>
             <kind>1</kind>
             <string>///instance activation
+
+/*
 instance_activate_all();
 instance_deactivate_all(true);
 instance_activate_region(x-(global.screenw/2),y-(global.screenh/2),global.screenw*1.5,global.screenh*1.5,true);
@@ -115,6 +117,8 @@ drawcirc = 0;
 circalpha = 0;
 
 hhsp = 0
+
+invul = 0;
 </string>
           </argument>
         </arguments>
@@ -282,10 +286,10 @@ if ctrls = 1
         }
     }
 
-if aiming = 1
+if hsp != 0 or vsp != 0
     {
-    savex += hsp
-    savey += vsp
+    //savex += hsp
+    //savey += vsp
     }
 
     //cancelling jump
@@ -322,15 +326,16 @@ if active = 0
     }
 
 //enemy death
-if place_meeting(x,y,oenemy)
-    {//reset code. This should work for any deaths
-    hsp = 0;
-    vsp = 0;
-    global.attempts ++;
-   x = control.frogspawnx;
-  y = control.frogspawny;
+if place_meeting(x,y,oenemy) &amp;&amp; invul = 0
+    {
+    invul = 60;
+    scr_die();
     }
-
+    
+if invul &gt; 0
+    {
+    invul --;
+    }
  
     
 image_index = grounded
@@ -832,7 +837,7 @@ draw_set_colour(c_black);
 
 if aiming = 1
     {
-    window_set_cursor(cr_cross);
+    //window_set_cursor(cr_cross);
     draw_sprite_ext(sprite20,0,savex,savey,1,1,0,c_ltgray,0.8);
     draw_set_alpha(0.6)
     draw_throw_arc_width2(x,y,(lengthdir_x(jpower,aimdir)),(lengthdir_y(jpower,aimdir)),0.75,0.5,osolid,5);
@@ -843,7 +848,7 @@ draw_set_alpha(1)
 if aiming = 0
 {
 drawcirc = 0;
-window_set_cursor(cr_default);
+//window_set_cursor(cr_default);
 }
 </string>
           </argument>
@@ -868,6 +873,29 @@ window_set_cursor(cr_default);
             <string>///set alpha and colour to default
 //draw_set_colour(c_black);
 //draw_set_alpha(1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="66">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>scr_levelend();
 </string>
           </argument>
         </arguments>
