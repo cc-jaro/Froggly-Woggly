@@ -39,7 +39,12 @@ switch (os_type)
 //android = 1;
 
 script_execute(display_init);    
-    
+
+scrnh = view_hview;
+scrnw = view_wview;
+
+scaleh = scrnh/10;
+scalew = scrnw/10;
 </string>
           </argument>
         </arguments>
@@ -60,7 +65,10 @@ script_execute(display_init);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>zoom = 1;
+            <string>///control setup
+
+
+zoom = 1;
 times = 0;
 
 //control scheme
@@ -69,6 +77,16 @@ ctrls = 1
 //Aiming init 
 aimdir = 0
 vkesc = virtual_key_add(view_wview-(view_wview-2), view_hview-(view_hview-2), 54, 57, vk_escape)
+//vkctrl = virtual_key_add(0+12, scrnh-(12)-120, 120, 120, vk_control)
+
+
+    
+    vkctrl = virtual_key_add(0+12, (scrnh-(12)-(scalew)), scalew, scalew, vk_control);
+    
+
+
+
+
 //Virtual keys init
 if android = 1
 {
@@ -380,6 +398,9 @@ draw_text(150,99550,"Click and drag anywhere to jump #Music by Debussy");
 draw_set_alpha(1);
 
 if android = 0
+ android = 1;
+
+/*
     {
 draw_set_font(fnt_blockfont);
 draw_set_colour(c_black);
@@ -388,9 +409,25 @@ draw_set_colour(c_white);
 
 //virtual_key_show(vkesc)
 draw_sprite_ext(sprite22,0,29,30,1.5,1.5,0,c_white,1);
+draw_sprite(sprite47,0,0+12, scrnh-(12)-120)
+
+//virtual_key_show(vkctrl);
+
+//if !keyboard_check_pressed(vk_control)
+//    {
+//    draw_rectangle(6,screenh-6,56,screenh-56,0)
+//    }
 
 if ofrog.active = 1
 {
+//draws shoot button
+draw_sprite(sprite47,0,0+12, scrnh-(12)-120);
+draw_sprite(ammobox,ofrog.ammo,140,scrnh-36);
+
+
+
+
+
 
 //charge bar top middle
 
@@ -421,26 +458,41 @@ if global.leveltype = 2
     }
 draw_set_colour(c_black);
 }}
+
+
+*/
+
+
+
+
 //android = 1
 //android
 //android
+
+
+scaleh = (scrnh / 10);
+scalew = (scrnw / 10);
+
 if android = 1
 {
-draw_set_font(fnt_blockfont);
+draw_set_font(f_android);
 draw_set_colour(c_black);
-draw_rectangle(0,0,global.screenw,40*2,0)
+//draw_rectangle(0,0,global.screenw,40*2,0)
+draw_rectangle(0,0,global.screenw,scaleh,0)
 draw_set_colour(c_white);
 
 //virtual_key_show(vkesc)
-draw_sprite_ext(sprite22,0,29,30,1.5,1.5,0,c_white,1);
+draw_sprite_ext(sprite22,0,29,30,1.7,1.7,0,c_white,1);
 
 if ofrog.active = 1
 {
 
 //charge bar top middle
 
-draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32*2),1)
-draw_healthbar((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32)*2,(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
+//draw_rectangle((global.screenw/2)-(300),(10),(global.screenw/2)+(300),(32*2),1)
+draw_rectangle((scalew * 2),(10),(scalew * 5),(scaleh - 10),1)
+
+draw_healthbar((scalew * 2),(10),(scalew * 5),(scaleh - 10),(100/110)*ofrog.jumpcharge,0,c_white,c_white,0,0,1)
 
 
 //text top right
@@ -459,15 +511,19 @@ if global.leveltype = 2
 {
     draw_set_halign(fa_left);
     
-    draw_text((global.screenw/10)*9,20*2,"points: "+string(global.levelscore))
-    draw_text((global.screenw/10)*8,20*2,"Time: "+string(ofrog.secs))
-    draw_text((global.screenw/10)*7,20*2,"Deaths: "+string(global.attempts))
-    draw_text((global.screenw/10)*3,20*2,"power:")
+    draw_text((scalew * 5.5),(scaleh / 2),"points: "+string(global.levelscore))
+    draw_text((scalew * 7),(scaleh / 2),"Time: "+string(ofrog.secs))
+    draw_text((scalew * 8.5),(scaleh / 2),"Deaths: "+string(global.attempts))
+    draw_text((scalew * 1),(scaleh / 2),"power:")
     }
 draw_set_colour(c_black);
 }
 
 
+//drawing ammo and shoot button
+//draw_sprite(sprite47,0,0+12, scrnh-(12)-120);
+draw_sprite(ammobox,ofrog.ammo,140,scrnh-36);
+virtual_key_show(vkctrl)
 
 }
 draw_set_alpha(1)
@@ -704,6 +760,35 @@ debug = 0
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if android = 1
+android = 0;
+
+else
+
+if android = 0
+android = 1;
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>

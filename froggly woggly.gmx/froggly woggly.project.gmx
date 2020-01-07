@@ -26,7 +26,9 @@
     <sprites name="menu sprites">
       <sprite>sprites\sarrow</sprite>
       <sprite>sprites\sprite22</sprite>
+      <sprite>sprites\sprite46</sprite>
       <sprite>sprites\sprite21</sprite>
+      <sprite>sprites\ammobox</sprite>
     </sprites>
     <sprites name="terrain">
       <sprite>sprites\sprite23</sprite>
@@ -81,6 +83,7 @@
     <sprite>sprites\sprite44</sprite>
     <sprite>sprites\sprite45</sprite>
     <sprite>sprites\sblack</sprite>
+    <sprite>sprites\sprite47</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -120,6 +123,7 @@
     <font>fonts\fpsfont</font>
     <font>fonts\font2</font>
     <font>fonts\fnt_blockfont</font>
+    <font>fonts\f_android</font>
     <font>fonts\fnt_blockfont2</font>
     <font>fonts\font4</font>
   </fonts>
