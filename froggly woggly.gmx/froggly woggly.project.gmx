@@ -55,6 +55,7 @@
       <sprite>sprites\sfrog2</sprite>
       <sprite>sprites\sprite28</sprite>
       <sprite>sprites\sprite35</sprite>
+      <sprite>sprites\spspit</sprite>
     </sprites>
     <sprites name="bonuses">
       <sprite>sprites\sprite2</sprite>
@@ -184,6 +185,9 @@
     <object>objects\oturret2</object>
     <object>objects\oblade</object>
   </objects>
+  <timelines name="timelines">
+    <timeline>timelines\timeline0</timeline>
+  </timelines>
   <rooms name="rooms">
     <room>rooms\rmenu</room>
     <room>rooms\rlevel1</room>
