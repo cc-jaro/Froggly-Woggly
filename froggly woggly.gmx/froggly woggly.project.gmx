@@ -31,12 +31,17 @@
       <sprite>sprites\ammobox</sprite>
     </sprites>
     <sprites name="terrain">
-      <sprite>sprites\sprite23</sprite>
-      <sprite>sprites\sprite25</sprite>
-      <sprite>sprites\sprite14</sprite>
-      <sprite>sprites\sprite12</sprite>
-      <sprite>sprites\sprite5</sprite>
-      <sprite>sprites\sprite3</sprite>
+      <sprite>sprites\spbluesand</sprite>
+      <sprite>sprites\spgrass</sprite>
+      <sprite>sprites\spsign</sprite>
+      <sprite>sprites\spstonesmall</sprite>
+      <sprite>sprites\spstone</sprite>
+      <sprite>sprites\spsolidpar</sprite>
+      <sprite>sprites\sprite52</sprite>
+      <sprite>sprites\spflag</sprite>
+      <sprite>sprites\spice</sprite>
+      <sprite>sprites\sprstonehillright</sprite>
+      <sprite>sprites\sprstonehillleft</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\sspinner1</sprite>
@@ -48,6 +53,13 @@
       <sprite>sprites\sprite16</sprite>
       <sprite>sprites\sprite15</sprite>
       <sprite>sprites\sprite13</sprite>
+      <sprites name="mushroom knight">
+        <sprite>sprites\mknightstand</sprite>
+        <sprite>sprites\mknightwalk</sprite>
+        <sprite>sprites\mknightturn</sprite>
+        <sprite>sprites\mknightbow</sprite>
+        <sprite>sprites\sparrow</sprite>
+      </sprites>
     </sprites>
     <sprites name="character">
       <sprite>sprites\sprite1</sprite>
@@ -76,15 +88,12 @@
       <sprite>sprites\sprite4</sprite>
     </sprites>
     <sprite>sprites\sprite38</sprite>
-    <sprite>sprites\sprite39</sprite>
-    <sprite>sprites\sprite40</sprite>
-    <sprite>sprites\sprite41</sprite>
     <sprite>sprites\sprite42</sprite>
-    <sprite>sprites\sprite43</sprite>
-    <sprite>sprites\sprite44</sprite>
+    <sprite>sprites\sprfrog</sprite>
     <sprite>sprites\sprite45</sprite>
     <sprite>sprites\sblack</sprite>
     <sprite>sprites\sprite47</sprite>
+    <sprite>sprites\sprite49</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -150,18 +159,16 @@
       <object>objects\obat</object>
       <object>objects\ojumper</object>
       <object>objects\ospinner</object>
-      <object>objects\oshroom</object>
+      <object>objects\omknight</object>
       <object>objects\opitcher</object>
       <object>objects\obatter</object>
-      <object>objects\object35</object>
-      <object>objects\otank</object>
-      <object>objects\obadguybullet</object>
+      <object>objects\oarrow</object>
     </objects>
     <objects name="bonuses">
       <object>objects\oding</object>
       <object>objects\ostar</object>
     </objects>
-    <objects name=" Level Objects">
+    <objects name="Terrain">
       <object>objects\osolidsmall</object>
       <object>objects\ospike</object>
       <object>objects\osolid</object>
@@ -184,6 +191,12 @@
     <object>objects\oturretbullet</object>
     <object>objects\oturret2</object>
     <object>objects\oblade</object>
+    <object>objects\osolidpar</object>
+    <object>objects\object42</object>
+    <object>objects\oice</object>
+    <object>objects\ostonehillright</object>
+    <object>objects\ostonehillleft</object>
+    <object>objects\oslopepar</object>
   </objects>
   <timelines name="timelines">
     <timeline>timelines\timeline0</timeline>

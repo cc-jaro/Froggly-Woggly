@@ -28,7 +28,7 @@
             <string>//alarm[0] = 240;
 
 grav = 0;
-alarm[1] = 15; //sets grav after 2 seconds
+alarm[1] = 60; //sets grav 
 
 xx = x;
 yy = y;
@@ -76,7 +76,7 @@ yy = y;
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="3" enumb="2">
+    <event eventtype="3" enumb="1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -129,7 +129,7 @@ if place_meeting(x,y+vsp,osolid)
         {
         y += sign(vsp);
         }
-    vsp = -8;
+    instance_destroy();
     }
     
 
@@ -156,6 +156,7 @@ if place_meeting(x,y,obadguyparent)
         }
     instance_destroy();
     }
+    
 </string>
           </argument>
         </arguments>
@@ -179,8 +180,8 @@ if place_meeting(x,y,obadguyparent)
           <argument>
             <kind>1</kind>
             <string>draw_self();
-image_angle = point_direction(x,y,xx,yy);
-image_xscale = sign(hsp);
+image_angle = point_direction(xx,yy,x,y);
+
 </string>
           </argument>
         </arguments>

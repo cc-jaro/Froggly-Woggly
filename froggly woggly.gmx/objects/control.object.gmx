@@ -511,8 +511,8 @@ if global.leveltype = 2
 {
     draw_set_halign(fa_left);
     
-    draw_text((scalew * 5.2),(scaleh / 2),"points: "+string(global.levelscore))
-    draw_text((scalew * 7.5),(scaleh / 2),"Time: "+string(ofrog.secs))
+    draw_text((scalew * 5.1),(scaleh / 2),"Time: "+string(ofrog.secs))
+    draw_text((scalew * 7),(scaleh / 2),"points: "+string(global.levelscore))
     draw_text((scalew * 8.5),(scaleh / 2),"Deaths: "+string(global.attempts))
     draw_text((scalew * 1),(scaleh / 2),"power:")
     }

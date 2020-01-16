@@ -159,16 +159,23 @@ if collision_circle(x,y+25,35,ospit,0,1)
           <argument>
             <kind>1</kind>
             <string>draw_self();
-image_speed = 0.5;
 
 if  distp &lt;= 450
     {
     sprite_index = sspinner1;
+    if image_speed &lt;= 0.5
+        {
+        image_speed += 0.01
+        }
     }
 
 if distp &gt; 450
     { 
     sprite_index = sspinner2;
+    if image_speed &gt;0
+        {
+        image_speed -= 0.01
+        }
     }
 
 
